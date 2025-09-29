@@ -1,3 +1,5 @@
+import Logo from '../assets/logo.svg?react';
+
 export default function Navbar() {
     const sections = [
         { id: "about", label: "About" },
@@ -10,15 +12,12 @@ export default function Navbar() {
     return (
         <nav className="bg-gray-900 text-white p-4 fixed w-full z-50 shadow">
             <div className="flex justify-between items-center max-w-7xl mx-auto">
-                <button
-                    onClick={() => window.scrollTo({
-                        top: 0,
-                        left: 0
-                    })} // scroll to top
-                    className="font-bold hover:text-gray-300 transition"
-                >
-                    Sean Devine
-                </button>
+                <Logo
+                    className="h-6 w-auto cursor-pointer"
+                    onClick={() =>
+                        window.scrollTo({ top: 0, left: 0, behavior: "smooth" })
+                    }
+                />
                 <div className="space-x-6">
                     {sections.map(({ id, label }) => (
                         <a
