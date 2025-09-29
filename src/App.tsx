@@ -8,6 +8,7 @@ import ContactSection from "./sections/ContactSection";
 export default function App() {
     return (
         <div className="flex flex-col min-h-screen scroll-smooth">
+            <Navbar />
             <main className="flex-grow">
                 <HomeSection />
                 <AboutSection />

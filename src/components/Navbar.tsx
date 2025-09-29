@@ -1,15 +1,20 @@
-import { Link } from "react-router-dom";
-
+import { sections } from "../constants/sections";
 
 export default function Navbar() {
     return (
-        <nav className="bg-gray-900 text-white p-4 w-full">
+        <nav className="bg-gray-900 text-white p-4 fixed w-full z-50 shadow">
             <div className="flex justify-between items-center max-w-7xl mx-auto">
-                <Link to="/" className="font-bold">Sean Devine</Link>
-                <div className="space-x-4">
-                    <Link to="/about">About</Link>
-                    <Link to="/projects">Projects</Link>
-                    <Link to="/contact">Contact</Link>
+                <a href="#home" className="font-bold">Sean Devine</a>
+                <div className="space-x-6">
+                    {sections.map(({ id, label }) => (
+                        <a
+                            key={id}
+                            href={`#${id}`}
+                            className={`hover:text-gray-300 transition`}
+                        >
+                            {label}
+                        </a>
+                        ))}
                 </div>
             </div>
         </nav>
