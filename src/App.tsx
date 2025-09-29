@@ -4,6 +4,8 @@ import HomeSection from "./sections/HomeSection";
 import AboutSection from "./sections/AboutSection";
 import ProjectsSection from "./sections/ProjectsSection";
 import ContactSection from "./sections/ContactSection";
+import ExperienceSection from "./sections/ExperienceSection";
+import SkillsSection from "./sections/SkillsSection";
 
 export default function App() {
     return (
@@ -12,6 +14,8 @@ export default function App() {
             <main className="flex-grow">
                 <HomeSection />
                 <AboutSection />
+                <ExperienceSection />
+                <SkillsSection />
                 <ProjectsSection />
                 <ContactSection />
             </main>
