@@ -1,6 +1,10 @@
-import { sections } from "../constants/sections";
-
 export default function Navbar() {
+    const sections = [
+        { id: "about", label: "About" },
+        { id: "projects", label: "Projects" },
+        { id: "contact", label: "Contact" },
+    ];
+
     return (
         <nav className="bg-gray-900 text-white p-4 fixed w-full z-50 shadow">
             <div className="flex justify-between items-center max-w-7xl mx-auto">
