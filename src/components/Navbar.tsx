@@ -10,7 +10,7 @@ export default function Navbar() {
     ];
 
     return (
-        <nav className="bg-gray-900 text-white p-4 fixed w-full z-50 shadow">
+        <nav className="bg-black text-white p-4 fixed w-full z-50 shadow">
             <div className="flex justify-between items-center max-w-7xl mx-auto">
                 <Logo
                     className="h-6 w-auto cursor-pointer"
