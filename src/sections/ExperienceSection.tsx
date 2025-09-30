@@ -20,9 +20,9 @@ type Experience = {
 const experiences: Experience[] = [
     {
         id: "structa",
-        title: "Full Stack Developer — Structa Co",
-        subtitle: "Early-stage, 8-person startup | Jan 2025 – Apr 2025",
-        summary: "temp",
+        title: "Structa Co",
+        subtitle: "Full Stack Developer  | Jan 2025 – Apr 2025",
+        summary: "Small (8 person) startup, worked on proprietary real estate development software",
         details: [
             "Rebuilt a React frontend from Figma wireframes with a component library, delivering a more consistent UI and cutting average latency by half",
             "Integrated Google Maps API & City of Toronto zoning API for property searches & zoning visualization",
@@ -31,9 +31,9 @@ const experiences: Experience[] = [
     },
     {
         id: "dsv",
-        title: "Full Stack Developer — DSV Building Group",
-        subtitle: "Toronto, ON | Jan 2024 – Apr 2024",
-        summary: "temp",
+        title: "DSV Building Group",
+        subtitle: "Full Stack Developer | Jan 2024 – Apr 2024",
+        summary: "Toronto construction company; worked in small team to develop condo customization portal from the ground up",
         details: [
             "Built a React condo customization portal from Figma wireframes, letting buyers preview finish selections & cutting sales–client coordination by 50%",
             "Designed a PostgreSQL schema & Node.js/Express backend for multi-unit configs & approvals, replacing spreadsheets & reducing miscommunication",
@@ -42,9 +42,9 @@ const experiences: Experience[] = [
     },
     {
         id: "ist",
-        title: "IT Consultant — University of Waterloo",
-        subtitle: "Waterloo, ON | Sept 2023 – Aug 2025",
-        summary: "temp",
+        title: "University of Waterloo",
+        subtitle: "Computing Consultant | Sept 2023 – Aug 2025",
+        summary: "Worked for the IT help desk for the University of Waterloo; helped solve tech issues for Waterloo students, staff, faculty and alumni",
         details: [
             "Resolved over 2500 software & firmware issues for UWaterloo affiliates, earning an average 4.9 star review",
             "Documented procedures in Jira & delivered 40+ hours of new-hire training for knowledge transfer",
@@ -52,9 +52,9 @@ const experiences: Experience[] = [
     },
     {
         id: "multimatic",
-        title: "Automation Developer — Multimatic Inc.",
-        subtitle: "Markham, ON | Sept 2022 – Dec 2022",
-        summary: "temp",
+        title: " Multimatic Inc.",
+        subtitle: "Automation Developer | Sept 2022 – Dec 2022",
+        summary: "Collaborated within the IT department to automate manual processes",
         details: [
             "Automated invoice approval workflows with Python & Power Automate, reducing average time by 65%",
             "Developed a secure automated payment system to process transactions exceeding $50,000",
@@ -62,9 +62,9 @@ const experiences: Experience[] = [
     },
     {
         id: "ssnc",
-        title: "Full Stack Developer — SS&C Technologies",
-        subtitle: "Toronto, ON | Jan 2022 – Apr 2022",
-        summary: "temp",
+        title: "SS&C Technologies",
+        subtitle: "Full Stack Developer | Jan 2022 – Apr 2022",
+        summary: "Worked on SS&C Lyric, a proprietary financial software API",
         details: [
             "Developed a custom Apache NiFi processor to parse 10,000+ financial receipts weekly",
             "Designed & deployed a data pipeline for ingesting, processing, & updating receipt data in real time",
@@ -76,7 +76,9 @@ const experiences: Experience[] = [
 export default function ExperienceSection() {
     return (
         <section id="experience" className="bg-gray-100 py-12">
-            <h2 className="text-4xl font-semibold mb-6 text-center">Experience</h2>
+            <h2 className="text-5xl font-extrabold mb-6 tracking-tight text-center">
+                Experience
+            </h2>
             <div className="max-w-3xl mx-auto space-y-6">
                 {experiences.map((exp) => (
                     <ExperienceCard key={exp.id} experience={exp} />
@@ -92,8 +94,8 @@ function ExperienceCard({ experience }: { experience: Experience }) {
     return (
         <Card className="shadow-md">
             <CardHeader>
-                <CardTitle className="text-xl">{experience.title}</CardTitle>
-                <CardDescription className="text-gray-500">
+                <CardTitle className="text-2xl font-bold">{experience.title}</CardTitle>
+                <CardDescription className="uppercase tracking-wide text-green-700 font-medium">
                     {experience.subtitle}
                 </CardDescription>
             </CardHeader>
@@ -101,11 +103,11 @@ function ExperienceCard({ experience }: { experience: Experience }) {
                 <p className="text-gray-700 mb-3">{experience.summary}</p>
                 <Collapsible open={open} onOpenChange={setOpen}>
                     <CollapsibleContent className="overflow-hidden transition-all duration-1000 data-[state=closed]:animate-collapse-up data-[state=open]:animate-collapse-down">
-                        <ul className="list-disc list-inside space-y-1 text-gray-700 mb-3">
+                        <div className="list-disc list-inside space-y-1 text-gray-700 mb-3">
                             {experience.details.map((d, i) => (
-                                <li key={i}>{d}</li>
+                                <p key={i}>{d}</p>
                             ))}
-                        </ul>
+                        </div>
                     </CollapsibleContent>
                     <Button
                         variant="ghost"
