@@ -1,26 +1,130 @@
-import Section from "../components/Section";
+"use client"
+
+import { useState } from "react"
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import {
+    Collapsible,
+    CollapsibleContent,
+} from "@/components/ui/collapsible"
+import { ChevronDown, ChevronUp } from "lucide-react"
+
+type Experience = {
+    id: string
+    subtitle: string
+    title: string
+    summary: string
+    details: string[]
+}
+
+const experiences: Experience[] = [
+    {
+        id: "structa",
+        title: "Full Stack Developer — Structa Co",
+        subtitle: "Early-stage, 8-person startup | Jan 2025 – Apr 2025",
+        summary: "temp",
+        details: [
+            "Rebuilt a React frontend from Figma wireframes with a component library, delivering a more consistent UI and cutting average latency by half",
+            "Integrated Google Maps API & City of Toronto zoning API for property searches & zoning visualization",
+            "Refactored backend with MVC using Prisma & PostgreSQL, reducing DB size by 43%",
+        ],
+    },
+    {
+        id: "dsv",
+        title: "Full Stack Developer — DSV Building Group",
+        subtitle: "Toronto, ON | Jan 2024 – Apr 2024",
+        summary: "temp",
+        details: [
+            "Built a React condo customization portal from Figma wireframes, letting buyers preview finish selections & cutting sales–client coordination by 50%",
+            "Designed a PostgreSQL schema & Node.js/Express backend for multi-unit configs & approvals, replacing spreadsheets & reducing miscommunication",
+            "Added API validation, & Jest tests to ensure reliable data sync between sales & construction teams",
+        ],
+    },
+    {
+        id: "ist",
+        title: "IT Consultant — University of Waterloo",
+        subtitle: "Waterloo, ON | Sept 2023 – Aug 2025",
+        summary: "temp",
+        details: [
+            "Resolved over 2500 software & firmware issues for UWaterloo affiliates, earning an average 4.9 star review",
+            "Documented procedures in Jira & delivered 40+ hours of new-hire training for knowledge transfer",
+        ],
+    },
+    {
+        id: "multimatic",
+        title: "Automation Developer — Multimatic Inc.",
+        subtitle: "Markham, ON | Sept 2022 – Dec 2022",
+        summary: "temp",
+        details: [
+            "Automated invoice approval workflows with Python & Power Automate, reducing average time by 65%",
+            "Developed a secure automated payment system to process transactions exceeding $50,000",
+        ],
+    },
+    {
+        id: "ssnc",
+        title: "Full Stack Developer — SS&C Technologies",
+        subtitle: "Toronto, ON | Jan 2022 – Apr 2022",
+        summary: "temp",
+        details: [
+            "Developed a custom Apache NiFi processor to parse 10,000+ financial receipts weekly",
+            "Designed & deployed a data pipeline for ingesting, processing, & updating receipt data in real time",
+            "Debugged and resolved over 30 issues for a financial software API platform based in Spring Boot",
+        ],
+    },
+]
 
 export default function ExperienceSection() {
     return (
-        <Section id="experience" className="bg-gray-100 text-gray-800">
-            <h2 className="text-4xl font-semibold mb-6">Experience</h2>
-            <div className="space-y-6 max-w-3xl">
-                <div className="p-6 bg-gray-50 rounded-lg shadow">
-                    <h3 className="text-2xl font-bold">Software Developer — DSV Building Group</h3>
-                    <p className="text-sm text-gray-600 mb-2">Toronto, ON | 2023</p>
-                    <ul className="list-disc list-inside space-y-1">
-                        <li>Built a React.js-powered condo customization platform with a Node.js backend.</li>
-                        <li>Implemented GraphQL APIs and WebSocket communication for real-time features.</li>
-                    </ul>
-                </div>
-                <div className="p-6 bg-gray-50 rounded-lg shadow">
-                    <h3 className="text-2xl font-bold">Automation Developer — Multimatic Inc.</h3>
-                    <p className="text-sm text-gray-600 mb-2">Markham, ON | 2022</p>
-                    <ul className="list-disc list-inside space-y-1">
-                        <li>Engineered backend infrastructure with Node.js for a resource allocation module.</li>
-                    </ul>
-                </div>
+        <section id="experience" className="bg-gray-100 py-12">
+            <h2 className="text-4xl font-semibold mb-6 text-center">Experience</h2>
+            <div className="max-w-3xl mx-auto space-y-6">
+                {experiences.map((exp) => (
+                    <ExperienceCard key={exp.id} experience={exp} />
+                ))}
             </div>
-        </Section>
-    );
+        </section>
+    )
+}
+
+function ExperienceCard({ experience }: { experience: Experience }) {
+    const [open, setOpen] = useState(false)
+
+    return (
+        <Card className="shadow-md">
+            <CardHeader>
+                <CardTitle className="text-xl">{experience.title}</CardTitle>
+                <CardDescription className="text-gray-500">
+                    {experience.subtitle}
+                </CardDescription>
+            </CardHeader>
+            <CardContent>
+                <p className="text-gray-700 mb-3">{experience.summary}</p>
+                <Collapsible open={open} onOpenChange={setOpen}>
+                    <CollapsibleContent className="overflow-hidden transition-all duration-1000 data-[state=closed]:animate-collapse-up data-[state=open]:animate-collapse-down">
+                        <ul className="list-disc list-inside space-y-1 text-gray-700 mb-3">
+                            {experience.details.map((d, i) => (
+                                <li key={i}>{d}</li>
+                            ))}
+                        </ul>
+                    </CollapsibleContent>
+                    <Button
+                        variant="ghost"
+                        className="p-0 h-auto font-medium flex items-center gap-1"
+                        onClick={() => setOpen(!open)}
+                    >
+                        {open ? (
+                            <>
+                                Collapse <ChevronUp className="w-4 h-4 transition-transform duration-300" />
+                            </>
+                        ) : (
+                            <>
+                                Read more <ChevronDown className="w-4 h-4 transition-transform duration-300" />
+                            </>
+                        )}
+                    </Button>
+
+                </Collapsible>
+            </CardContent>
+        </Card>
+    )
 }
