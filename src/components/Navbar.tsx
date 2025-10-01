@@ -10,10 +10,10 @@ export default function Navbar() {
     ];
 
     return (
-        <nav className="bg-black text-white p-4 fixed w-full z-50 shadow">
+        <nav className="bg-black text-white font-bold text-lg p-4 fixed w-full z-50 shadow">
             <div className="flex justify-between items-center max-w-7xl mx-auto">
                 <Logo
-                    className="h-6 w-auto cursor-pointer"
+                    className="h-5 w-auto cursor-pointer"
                     onClick={() =>
                         window.scrollTo({ top: 0, left: 0, behavior: "smooth" })
                     }
