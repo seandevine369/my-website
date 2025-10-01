@@ -1,6 +1,7 @@
+import { memo } from "react";
 import { motion } from "framer-motion";
 
-export default function Stars() {
+function Stars() {
     // Fewer motion divs but simulate more stars by making them very small and fast
     const starCount = 200; // fewer divs but each can "simulate" multiple stars
     const stars = Array.from({ length: starCount }).map(() => ({
@@ -42,3 +43,5 @@ export default function Stars() {
         </>
     );
 }
+
+export default memo(Stars);
