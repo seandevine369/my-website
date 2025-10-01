@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react";
 import Section from "../components/Section";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -9,6 +9,7 @@ import {
     CollapsibleContent,
 } from "@/components/ui/collapsible"
 import { ChevronDown, ChevronUp } from "lucide-react"
+
 
 type Experience = {
     id: string
@@ -91,9 +92,38 @@ export default function ExperienceSection() {
 
 function ExperienceCard({ experience }: { experience: Experience }) {
     const [open, setOpen] = useState(false)
+    const [visible, setVisible] = useState(false);
+    const ref = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    setVisible(entry.isIntersecting);
+                });
+            },
+            {
+                threshold: 0,
+                rootMargin: '0% 0% -13% 0%',
+            }
+        );
+
+        const el = ref.current; // store the element
+
+        if (el) observer.observe(el);
+
+        return () => {
+            if (el) observer.unobserve(el);
+        };
+    }, []);
+
 
     return (
-        <Card className="shadow-md rounded-none bg-zinc-800 border-0">
+        <Card
+            ref={ref}
+            className={`shadow-md rounded-none bg-zinc-800 border-0 transform transition-all duration-700 ease-out
+        ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+        >
             <CardHeader>
                 <CardTitle className="text-4xl text-white font-bold">{experience.title}</CardTitle>
                 <CardDescription className="uppercase tracking-wide text-gray-400 font-medium text-lg">
