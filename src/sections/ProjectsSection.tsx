@@ -61,7 +61,7 @@ const projects = [
 
 export default function ProjectsSection() {
     return (
-        <Section id="projects" className="min-h-screen relative overflow-hidden text-gray-100">
+        <Section id="projects">
             {/* Animated galaxy gradient */}
             <motion.div
                 className="absolute inset-0 bg-gradient-to-r from-purple-900 via-indigo-900 to-black"

@@ -2,7 +2,7 @@ import Section from "../components/Section";
 
 export default function AboutSection() {
     return (
-        <Section id="about" className="bg-black text-white min-h-screen">
+        <Section id="about">
             <div className="px-12 md:px-32 py-16">
                 {/* Centered Heading */}
                 <h2 className="text-5xl font-extrabold mb-12 tracking-tight text-center">

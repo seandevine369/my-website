@@ -2,8 +2,10 @@ import Section from "../components/Section";
 
 export default function ContactSection() {
     return (
-        <Section id="contact" className="bg-white text-gray-800">
-            <h2 className="text-4xl font-semibold mb-6">Contact</h2>
+        <Section id="contact">
+            <h2 className="text-5xl font-extrabold mb-12 tracking-tight text-center">
+                Contact Me
+            </h2>
             <p className="text-center text-lg mb-6">
                 Feel free to reach out via email or connect on LinkedIn.
             </p>

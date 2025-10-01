@@ -40,7 +40,7 @@ const skills = {
 
 export default function SkillsSection() {
     return (
-        <Section id="skills" className="bg-black text-gray-100 min-h-screen">
+        <Section id="skills">
             <h2 className="text-5xl font-extrabold mb-6 tracking-tight text-center">
                 Skills
             </h2>

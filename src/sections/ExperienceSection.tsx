@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Section from "../components/Section";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import {
@@ -75,7 +76,7 @@ const experiences: Experience[] = [
 
 export default function ExperienceSection() {
     return (
-        <section id="experience" className="bg-gray-100 py-12">
+        <Section id="experience">
             <h2 className="text-5xl font-extrabold mb-6 tracking-tight text-center">
                 Experience
             </h2>
@@ -84,7 +85,7 @@ export default function ExperienceSection() {
                     <ExperienceCard key={exp.id} experience={exp} />
                 ))}
             </div>
-        </section>
+        </Section>
     )
 }
 
