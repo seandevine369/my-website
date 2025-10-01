@@ -1,8 +1,14 @@
 export default function Footer() {
     return (
-        <footer className="bg-gray-100 text-gray-700 py-6 mt-8">
+        <footer className="bg-black text-gray-200 p-1 mt-8">
             <div className="container mx-auto text-center">
-                © {new Date().getFullYear()} Sean Devine — Built with React + Vite
+                <span>
+                    Copyright © {new Date().getFullYear()}
+                </span>
+                <span className="mx-2">|</span>
+                <span className="text-white font-semibold">
+                Sean Devine
+                </span>
             </div>
         </footer>
     );
