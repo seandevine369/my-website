@@ -40,17 +40,19 @@ const skills = {
 
 export default function SkillsSection() {
     return (
-        <Section id="skills" className="bg-gray-50 text-gray-900">
-            <h2 className="text-4xl font-semibold mb-10">Skills</h2>
-            <div className="space-y-12">
+        <Section id="skills" className="bg-black text-gray-100 min-h-screen">
+            <h2 className="text-5xl font-extrabold mb-6 tracking-tight text-center">
+                Skills
+            </h2>
+            <div className="space-y-4">
                 {Object.entries(skills).map(([category, items]) => (
                     <div key={category}>
-                        <h3 className="text-2xl font-medium mb-6">{category}</h3>
-                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                        <h3 className="text-2xl font-bold mb-3">{category}</h3>
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-4">
                             {items.map((skill) => (
                                 <div
                                     key={skill.name}
-                                    className="flex flex-col items-center justify-center p-4 border border-green-500 rounded-xl bg-white hover:shadow-md transition"
+                                    className="flex flex-col items-center justify-center p-2 border-0 border-green-700 rounded-xl bg-gray-900 text-gray-200 hover:shadow-md transition"
                                 >
                                     {skill.logoUrl ? (
                                         <img
@@ -63,7 +65,7 @@ export default function SkillsSection() {
                                             }}
                                         />
                                     ) : null}
-                                    <p className="text-sm font-medium">{skill.name}</p>
+                                    <p className="text-xs font-medium">{skill.name}</p>
                                 </div>
                             ))}
                         </div>
