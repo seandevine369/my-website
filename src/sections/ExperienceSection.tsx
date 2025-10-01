@@ -80,7 +80,7 @@ export default function ExperienceSection() {
             <h2 className="text-5xl font-extrabold mb-6 tracking-tight text-center">
                 Experience
             </h2>
-            <div className="max-w-3xl mx-auto space-y-6">
+            <div className="max-w-4xl mx-auto space-y-6">
                 {experiences.map((exp) => (
                     <ExperienceCard key={exp.id} experience={exp} />
                 ))}
@@ -95,16 +95,16 @@ function ExperienceCard({ experience }: { experience: Experience }) {
     return (
         <Card className="shadow-md rounded-none bg-zinc-800 border-0">
             <CardHeader>
-                <CardTitle className="text-2xl text-white font-bold">{experience.title}</CardTitle>
-                <CardDescription className="uppercase tracking-wide text-gray-400 font-medium">
+                <CardTitle className="text-4xl text-white font-bold">{experience.title}</CardTitle>
+                <CardDescription className="uppercase tracking-wide text-gray-400 font-medium text-lg">
                     {experience.subtitle}
                 </CardDescription>
             </CardHeader>
             <CardContent>
-                <p className="text-gray-200 mb-3">{experience.summary}</p>
+                <p className="text-gray-200 text-lg mb-3">{experience.summary}</p>
                 <Collapsible open={open} onOpenChange={setOpen}>
                     <CollapsibleContent className="overflow-hidden transition-all duration-1000 data-[state=closed]:animate-collapse-up data-[state=open]:animate-collapse-down">
-                        <div className="list-disc list-inside space-y-1 text-gray-200 mb-3">
+                        <div className="list-disc list-inside space-y-1 text-gray-200 text-lg mb-3">
                             {experience.details.map((d, i) => (
                                 <p key={i}>{d}</p>
                             ))}
