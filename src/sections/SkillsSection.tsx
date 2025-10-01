@@ -52,7 +52,7 @@ export default function SkillsSection() {
                             {items.map((skill) => (
                                 <div
                                     key={skill.name}
-                                    className="flex flex-col items-center justify-center p-2 border-0 border-green-700 rounded-xl bg-gray-900 text-gray-200 hover:shadow-md transition"
+                                    className="flex flex-col items-center justify-center p-2 border-0 border-green-700 rounded-xl bg-zinc-800 text-gray-200 hover:shadow-md transition"
                                 >
                                     {skill.logoUrl ? (
                                         <img
