@@ -117,4 +117,7 @@
   body {
     @apply bg-background text-foreground;
   }
+  html, body {
+    @apply bg-black overscroll-none;
+  }
 }
