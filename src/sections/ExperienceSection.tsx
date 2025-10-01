@@ -93,18 +93,18 @@ function ExperienceCard({ experience }: { experience: Experience }) {
     const [open, setOpen] = useState(false)
 
     return (
-        <Card className="shadow-md">
+        <Card className="shadow-md rounded-none bg-zinc-800 border-0">
             <CardHeader>
-                <CardTitle className="text-2xl font-bold">{experience.title}</CardTitle>
-                <CardDescription className="uppercase tracking-wide text-green-700 font-medium">
+                <CardTitle className="text-2xl text-white font-bold">{experience.title}</CardTitle>
+                <CardDescription className="uppercase tracking-wide text-gray-400 font-medium">
                     {experience.subtitle}
                 </CardDescription>
             </CardHeader>
             <CardContent>
-                <p className="text-gray-700 mb-3">{experience.summary}</p>
+                <p className="text-gray-200 mb-3">{experience.summary}</p>
                 <Collapsible open={open} onOpenChange={setOpen}>
                     <CollapsibleContent className="overflow-hidden transition-all duration-1000 data-[state=closed]:animate-collapse-up data-[state=open]:animate-collapse-down">
-                        <div className="list-disc list-inside space-y-1 text-gray-700 mb-3">
+                        <div className="list-disc list-inside space-y-1 text-gray-200 mb-3">
                             {experience.details.map((d, i) => (
                                 <p key={i}>{d}</p>
                             ))}
@@ -112,7 +112,7 @@ function ExperienceCard({ experience }: { experience: Experience }) {
                     </CollapsibleContent>
                     <Button
                         variant="ghost"
-                        className="p-0 h-auto font-medium flex items-center gap-1"
+                        className="p-0 h-auto font-medium flex items-center gap-1 text-gray-200 hover:bg-zinc-600 hover:text-gray-200"
                         onClick={() => setOpen(!open)}
                     >
                         {open ? (
