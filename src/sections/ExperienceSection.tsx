@@ -94,7 +94,7 @@ export default function ExperienceSection() {
                     <div key={exp.id} className="flex items-start gap-6">
                         {/* Logo section (1/5) */}
                         <div className="w-1/5 flex justify-center">
-                            <div className="aspect-square h-45 rounded-full overflow-hidden shadow-md flex items-center justify-center">
+                            <div className="aspect-square h-45 rounded-lg overflow-hidden shadow-md flex items-center justify-center">
                                 <img
                                     src={`${exp.logoUrl}`}
                                     alt={`${exp.title} logo`}
