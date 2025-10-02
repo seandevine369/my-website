@@ -91,20 +91,24 @@ export default function ProjectsSection() {
                 Projects
             </h2>
 
-            <Carousel className="w-full max-w-5xl mx-auto">
+            <Carousel className="w-full max-w-6xl mx-auto"
+                opts={{
+                    loop: true,
+                }}
+            >
                 <CarouselContent>
                     {projects.map((project, i) => (
                         <CarouselItem key={i} className="basis-full md:basis-2/3 lg:basis-1/2">
-                            <Card className="h-full flex flex-col justify-between bg-white shadow-xl rounded-2xl border border-gray-200">
+                            <Card className="h-full flex flex-col justify-between bg-zinc-800  shadow-xl rounded-2xl border border-zinc-800 font-mono">
                                 <div>
                                     <CardHeader className="text-center">
-                                        <CardTitle className="text-2xl font-bold">{project.title}</CardTitle>
-                                        <p className="text-xs uppercase tracking-wide text-indigo-400 font-medium mb-3">
+                                        <CardTitle className="text-3xl text-white font-bold">{project.title}</CardTitle>
+                                        <p className="text-sm uppercase tracking-wide text-indigo-400 font-medium mb-3">
                                         {project.tech}
                                         </p>
 
                                     </CardHeader>
-                                <CardContent className="space-y-2 text-sm text-gray-700 leading-relaxed">
+                                <CardContent className="space-y-2 text-md text-gray-200 leading-relaxed">
                                     {project.description.map((d, idx) => (
                                         <p key={idx}>{d}</p>
                                     ))}
@@ -112,7 +116,7 @@ export default function ProjectsSection() {
 
                             </div>
                                 <div className="p-4">
-                                    <Button variant="outline" asChild>
+                                    <Button variant="default" className="" asChild>
                                         <a href={project.github} target="_blank" rel="noopener noreferrer">
                                             View on GitHub
                                         </a>
@@ -122,8 +126,8 @@ export default function ProjectsSection() {
                         </CarouselItem>
                     ))}
                 </CarouselContent>
-                <CarouselPrevious />
-                <CarouselNext />
+                <CarouselPrevious className="bg-zinc-800 text-gray-200 hover:bg-zinc-600 hover:text-gray-200 border-0"/>
+                <CarouselNext className="bg-zinc-800 text-gray-200 hover:bg-zinc-600 hover:text-gray-200 border-0"/>
             </Carousel>
             </div>
         </Section>
