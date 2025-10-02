@@ -41,6 +41,8 @@ const skills = {
 export default function SkillsSection() {
     return (
         <Section id="skills">
+            <div className="absolute inset-0 bg-gradient-to-br from-indigo-950 via-zinc-900 to-purple-950 opacity-80" />
+            <div className="relative z-10">
             <h2 className="text-5xl font-extrabold mb-6 tracking-tight text-center">
                 Skills
             </h2>
@@ -71,6 +73,7 @@ export default function SkillsSection() {
                         </div>
                     </div>
                 ))}
+            </div>
             </div>
         </Section>
     );

@@ -3,6 +3,8 @@ import Section from "../components/Section";
 export default function AboutSection() {
     return (
         <Section id="about">
+            <div className="absolute inset-0 bg-gradient-to-r from-zinc-900 via-zinc-950 to-black opacity-95" />
+            <div className="relative z-10">
             <div className="px-12 md:px-32 py-16">
                 {/* Centered Heading */}
                 <h2 className="text-5xl font-extrabold mb-12 tracking-tight text-center">
@@ -29,6 +31,7 @@ export default function AboutSection() {
                         />
                     </div>
                 </div>
+            </div>
             </div>
         </Section>
     );

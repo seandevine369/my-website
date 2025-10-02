@@ -64,7 +64,7 @@ export default function ProjectsSection() {
         <Section id="projects">
             {/* Animated galaxy gradient */}
             <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-purple-900 via-indigo-900 to-black"
+                className="absolute inset-0 bg-gradient-to-r from-purple-950 via-indigo-900 to-black"
                 animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                 style={{ backgroundSize: "200% 200%" }}
@@ -72,17 +72,17 @@ export default function ProjectsSection() {
 
             {/* Blurred glowing orbs */}
             <motion.div
-                className="absolute top-1/4 left-1/4 w-96 h-96 bg-pink-500 rounded-full mix-blend-screen filter blur-3xl opacity-30"
+                className="absolute top-1/4 left-1/4 w-96 h-96 bg-pink-800 rounded-full mix-blend-screen filter blur-3xl opacity-30"
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
             />
             <motion.div
-                className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-blue-500 rounded-full mix-blend-screen filter blur-3xl opacity-30"
+                className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-blue-800 rounded-full mix-blend-screen filter blur-3xl opacity-30"
                 animate={{ scale: [1.2, 1, 1.2] }}
                 transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
             />
             <motion.div
-                className="absolute top-2/3 left-1/2 w-72 h-72 bg-purple-500 rounded-full mix-blend-screen filter blur-3xl opacity-25"
+                className="absolute top-2/3 left-1/2 w-72 h-72 bg-purple-800 rounded-full mix-blend-screen filter blur-3xl opacity-25"
                 animate={{ scale: [1, 1.3, 1] }}
                 transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
             />
@@ -91,7 +91,7 @@ export default function ProjectsSection() {
                 Projects
             </h2>
 
-            <Carousel className="w-full max-w-4xl mx-auto">
+            <Carousel className="w-full max-w-5xl mx-auto">
                 <CarouselContent>
                     {projects.map((project, i) => (
                         <CarouselItem key={i} className="basis-full md:basis-2/3 lg:basis-1/2">
@@ -99,8 +99,8 @@ export default function ProjectsSection() {
                                 <div>
                                     <CardHeader className="text-center">
                                         <CardTitle className="text-2xl font-bold">{project.title}</CardTitle>
-                                        <p className="text-xs uppercase tracking-wide text-green-700 font-medium mb-3">
-                                            {project.tech}
+                                        <p className="text-xs uppercase tracking-wide text-indigo-400 font-medium mb-3">
+                                        {project.tech}
                                         </p>
 
                                     </CardHeader>

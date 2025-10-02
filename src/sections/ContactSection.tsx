@@ -4,6 +4,9 @@ import { Mail, Linkedin, Github, FileText } from "lucide-react";
 export default function ContactSection() {
     return (
         <Section id="contact">
+            <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-indigo-950 to-black opacity-90" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/30 via-transparent to-transparent" />
+            <div className="relative z-10">
             <h2 className="text-5xl font-extrabold mb-12 tracking-tight text-center">
                 Contact Me
             </h2>
@@ -99,6 +102,7 @@ export default function ContactSection() {
                     Send Message
                 </button>
             </form>
+            </div>
         </Section>
     );
 }
