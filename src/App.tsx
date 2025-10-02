@@ -15,8 +15,8 @@ export default function App() {
                 <HomeSection />
                 <AboutSection />
                 <ExperienceSection />
-                <SkillsSection />
                 <ProjectsSection />
+                <SkillsSection />
                 <ContactSection />
             </main>
             <Footer />
