@@ -17,6 +17,7 @@ type Experience = {
     title: string
     summary: string
     details: string[]
+    logoUrl: string
 }
 
 const experiences: Experience[] = [
@@ -30,6 +31,7 @@ const experiences: Experience[] = [
             "Integrated Google Maps API & City of Toronto zoning API for property searches & zoning visualization",
             "Refactored backend with MVC using Prisma & PostgreSQL, reducing DB size by 43%",
         ],
+        logoUrl:"/logos/structa.jpeg",
     },
     {
         id: "dsv",
@@ -41,6 +43,7 @@ const experiences: Experience[] = [
             "Designed a PostgreSQL schema & Node.js/Express backend for multi-unit configs & approvals, replacing spreadsheets & reducing miscommunication",
             "Added API validation, & Jest tests to ensure reliable data sync between sales & construction teams",
         ],
+        logoUrl:"/logos/dsv.png",
     },
     {
         id: "ist",
@@ -51,6 +54,7 @@ const experiences: Experience[] = [
             "Resolved over 2500 software & firmware issues for UWaterloo affiliates, earning an average 4.9 star review",
             "Documented procedures in Jira & delivered 40+ hours of new-hire training for knowledge transfer",
         ],
+        logoUrl:"/logos/uwaterloo.svg",
     },
     {
         id: "multimatic",
@@ -61,6 +65,7 @@ const experiences: Experience[] = [
             "Automated invoice approval workflows with Python & Power Automate, reducing average time by 65%",
             "Developed a secure automated payment system to process transactions exceeding $50,000",
         ],
+        logoUrl:"/logos/multimatic.png",
     },
     {
         id: "ssnc",
@@ -72,6 +77,7 @@ const experiences: Experience[] = [
             "Designed & deployed a data pipeline for ingesting, processing, & updating receipt data in real time",
             "Debugged and resolved over 30 issues for a financial software API platform based in Spring Boot",
         ],
+        logoUrl:"/logos/ssnc.png",
     },
 ]
 
@@ -81,11 +87,27 @@ export default function ExperienceSection() {
             <h2 className="text-5xl font-extrabold mb-6 tracking-tight text-center">
                 Experience
             </h2>
-            <div className="max-w-4xl mx-auto space-y-6">
+            <div className="max-w-6xl mx-auto space-y-6">
                 {experiences.map((exp) => (
-                    <ExperienceCard key={exp.id} experience={exp} />
+                    <div key={exp.id} className="flex items-start gap-6">
+                        {/* Logo section (1/5) */}
+                        <div className="w-1/5 flex justify-center">
+                            <div className="aspect-square h-45 rounded-full overflow-hidden shadow-md flex items-center justify-center">
+                                <img
+                                    src={`${exp.logoUrl}`}
+                                    alt={`${exp.title} logo`}
+                                    className="w-full h-full object-contain"
+                                />
+                            </div>
+                        </div>
+                        {/* Card section (4/5) */}
+                        <div className="w-4/5">
+                            <ExperienceCard experience={exp} />
+                        </div>
+                    </div>
                 ))}
             </div>
+
         </Section>
     )
 }
@@ -104,18 +126,19 @@ function ExperienceCard({ experience }: { experience: Experience }) {
             },
             {
                 threshold: 0,
-                rootMargin: '0% 0% -13% 0%',
+                rootMargin: "0% 0% -13% 0%",
             }
         );
 
-        const el = ref.current; // store the element
+        const el = ref.current; // copy once
 
         if (el) observer.observe(el);
 
         return () => {
-            if (el) observer.unobserve(el);
+            if (el) observer.unobserve(el); // use the stable reference
         };
     }, []);
+
 
 
     return (
