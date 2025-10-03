@@ -1,4 +1,5 @@
 import Section from "../components/Section";
+import Galaxy from "@/components/Galaxy";
 import {
     Carousel,
     CarouselContent,
@@ -6,11 +7,10 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/components/ui/carousel";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
+import {Button} from "@/components/ui/button";
 
-const projects = [
+const projects: Project[] = [
     {
         title: "Chronolog Journaling App",
         tech: "Kotlin, JUnit, Gradle, Docker, PostgreSQL",
@@ -63,73 +63,68 @@ export default function ProjectsSection() {
     return (
         <Section id="projects">
             {/* Animated galaxy gradient */}
-            <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-purple-950 via-indigo-900 to-black"
-                animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                style={{ backgroundSize: "200% 200%" }}
-            />
-
-            {/* Blurred glowing orbs */}
-            <motion.div
-                className="absolute top-1/4 left-1/4 w-96 h-96 bg-pink-800 rounded-full mix-blend-screen filter blur-3xl opacity-30"
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-            />
-            <motion.div
-                className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-blue-800 rounded-full mix-blend-screen filter blur-3xl opacity-30"
-                animate={{ scale: [1.2, 1, 1.2] }}
-                transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-            />
-            <motion.div
-                className="absolute top-2/3 left-1/2 w-72 h-72 bg-purple-800 rounded-full mix-blend-screen filter blur-3xl opacity-25"
-                animate={{ scale: [1, 1.3, 1] }}
-                transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-            />
+            <Galaxy />
             <div className="relative z-10">
             <h2 className="text-5xl font-extrabold mb-6 tracking-tight text-center">
                 Projects
             </h2>
-
-            <Carousel className="w-full max-w-6xl mx-auto"
-                opts={{
-                    loop: true,
-                }}
-            >
-                <CarouselContent>
-                    {projects.map((project, i) => (
-                        <CarouselItem key={i} className="basis-full md:basis-2/3 lg:basis-1/2">
-                            <Card className="h-full flex flex-col justify-between bg-zinc-800  shadow-xl rounded-2xl border border-zinc-800 font-mono">
-                                <div>
-                                    <CardHeader className="text-center">
-                                        <CardTitle className="text-3xl text-white font-bold">{project.title}</CardTitle>
-                                        <p className="text-sm uppercase tracking-wide text-indigo-400 font-medium mb-3">
-                                        {project.tech}
-                                        </p>
-
-                                    </CardHeader>
-                                <CardContent className="space-y-2 text-md text-gray-200 leading-relaxed">
-                                    {project.description.map((d, idx) => (
-                                        <p key={idx}>{d}</p>
-                                    ))}
-                                </CardContent>
-
-                            </div>
-                                <div className="p-4">
-                                    <Button variant="default" className="" asChild>
-                                        <a href={project.github} target="_blank" rel="noopener noreferrer">
-                                            View on GitHub
-                                        </a>
-                                    </Button>
-                                </div>
-                            </Card>
-                        </CarouselItem>
-                    ))}
-                </CarouselContent>
-                <CarouselPrevious className="bg-zinc-800 text-gray-200 hover:bg-zinc-600 hover:text-gray-200 border-0"/>
-                <CarouselNext className="bg-zinc-800 text-gray-200 hover:bg-zinc-600 hover:text-gray-200 border-0"/>
-            </Carousel>
+                <ProjectsCarousel projects={projects} />
             </div>
         </Section>
+    );
+}
+
+interface Project {
+    title: string;
+    tech: string;
+    description: string[];
+    github: string;
+}
+
+function ProjectsCarousel({ projects }: { projects: Project[] }) {
+    return (
+        <Carousel className="w-full max-w-6xl mx-auto">
+            <CarouselContent>
+                {projects.map((project, i) => (
+                    <CarouselItem
+                        key={i}
+                        className="basis-full md:basis-2/3 lg:basis-1/2"
+                    >
+                        <ProjectCard {...project} />
+                    </CarouselItem>
+                ))}
+            </CarouselContent>
+            <CarouselPrevious className="bg-zinc-800 text-gray-200 hover:bg-zinc-600 hover:text-gray-200 border-0"/>
+            <CarouselNext className="bg-zinc-800 text-gray-200 hover:bg-zinc-600 hover:text-gray-200 border-0"/>
+        </Carousel>
+    );
+}
+
+function ProjectCard({ title, tech, description, github }: Project) {
+    return (
+        <Card className="h-full flex flex-col justify-between bg-zinc-800 shadow-xl rounded-2xl border border-zinc-800 font-mono">
+            <div>
+                <CardHeader className="text-center">
+                    <CardTitle className="text-3xl text-white font-bold">{title}</CardTitle>
+                    <p className="text-sm uppercase tracking-wide text-indigo-400 font-medium mb-3">
+                        {tech}
+                    </p>
+                </CardHeader>
+
+                <CardContent className="space-y-2 text-md text-gray-200 leading-relaxed">
+                    {description.map((d, idx) => (
+                        <p key={idx}>{d}</p>
+                    ))}
+                </CardContent>
+            </div>
+
+            <div className="p-4">
+                <Button variant="default" asChild>
+                    <a href={github} target="_blank" rel="noopener noreferrer">
+                        View on GitHub
+                    </a>
+                </Button>
+            </div>
+        </Card>
     );
 }
