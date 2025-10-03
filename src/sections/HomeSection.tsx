@@ -5,7 +5,7 @@ import Section from "../components/Section";
 import Stars from "../components/Stars";
 
 export default function HomeSection() {
-    const fullText = "I build modern web applications with React, Vite, and Tailwind CSS. Scroll down to see my work.";
+    const fullText = "I'm a Waterloo CS graduate based in Toronto. Scroll down to see my work.";
     const [displayedText, setDisplayedText] = useState("");
     const [showCursor, setShowCursor] = useState(true);
 
@@ -15,7 +15,7 @@ export default function HomeSection() {
             setDisplayedText(fullText.slice(0, i + 1));
             i++;
             if (i === fullText.length) clearInterval(typingInterval);
-        }, 50); // typing speed (ms per letter)
+        }, 75); // typing speed (ms per letter)
 
         return () => clearInterval(typingInterval);
     }, []);
@@ -33,7 +33,7 @@ export default function HomeSection() {
         <Section id="home">
             <Stars />
             <div className="relative z-10 text-center">
-                <h1 className="text-5xl font-bold mb-4">Hi, I’m Sean</h1>
+                <h1 className="text-5xl font-black font-sans mb-4">Hi, I’m Sean</h1>
                 <p className="text-xl max-w-2xl mx-auto font-mono">
                     {displayedText}
                     <span className={`ml-1 ${showCursor ? "opacity-100" : "opacity-0"} inline-block`}>|</span>
