@@ -6,7 +6,7 @@ interface SectionProps {
 
 export default function Section({ id, children, className = "" }: SectionProps) {
     return (
-        <section id={id} className={`w-screen flex flex-col justify-center items-center px-6 py-24 overflow-hidden bg-black text-gray-100  relative snap-start min-h-screen ${className}`}>
+        <section id={id} className={`flex flex-col justify-center items-center py-24 overflow-hidden relative snap-start min-h-screen ${className}`}>
             {children}
         </section>
     );

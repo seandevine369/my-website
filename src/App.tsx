@@ -9,9 +9,9 @@ import SkillsSection from "./sections/SkillsSection";
 
 export default function App() {
     return (
-        <div className="flex flex-col min-h-screen">
+        <div>
             <Navbar />
-            <main className="flex-grow snap-y h-screen overflow-y-scroll snap-proximity">
+            <main className="flex-grow h-screen overflow-y-scroll snap-y snap-manditory">
                 <HomeSection />
                 <AboutSection />
                 <ExperienceSection />

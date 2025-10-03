@@ -118,6 +118,6 @@
     @apply bg-background text-foreground;
   }
   html, body {
-    @apply bg-black overscroll-none;
+    @apply bg-black text-gray-100 overscroll-none;
   }
 }
