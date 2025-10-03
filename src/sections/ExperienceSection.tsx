@@ -100,7 +100,7 @@ export default function ExperienceSection() {
                             </div>
                         </div>
                         {/* Card section (4/5) */}
-                        <div className="w-4/5">
+                        <div className="w-4/5 text-left">
                             <ExperienceCard experience={exp} />
                         </div>
                     </div>
