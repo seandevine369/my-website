@@ -98,7 +98,7 @@ function ProjectCard({ title, tech, description, github }: Project) {
                     </p>
                 </CardHeader>
 
-                <CardContent className="space-y-2 text-md text-gray-200 leading-relaxed">
+                <CardContent className="space-y-2 text-left text-md text-gray-200 leading-relaxed">
                     {description.map((d, idx) => (
                         <p key={idx}>{d}</p>
                     ))}
