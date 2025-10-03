@@ -88,30 +88,15 @@ export default function ExperienceSection() {
         <Section id="experience" title="Experience" background={bg}>
             <div className="max-w-6xl mx-auto space-y-6">
                 {experiences.map((exp) => (
-                    <div key={exp.id} className="flex items-start gap-6">
-                        {/* Logo section (1/5) */}
-                        <div className="w-1/5 flex justify-center">
-                            <div className="aspect-square h-45 rounded-lg overflow-hidden shadow-md flex items-center justify-center">
-                                <img
-                                    src={`${exp.logoUrl}`}
-                                    alt={`${exp.title} logo`}
-                                    className="w-full h-full object-contain"
-                                />
-                            </div>
-                        </div>
-                        {/* Card section (4/5) */}
-                        <div className="w-4/5 text-left">
-                            <ExperienceCard experience={exp} />
-                        </div>
-                    </div>
+                    <ExperienceItem experience={exp} />
                 ))}
             </div>
         </Section>
     )
 }
 
-function ExperienceCard({ experience }: { experience: Experience }) {
-    const [open, setOpen] = useState(false)
+function ExperienceItem({ experience }: { experience: Experience }) {
+
     const [visible, setVisible] = useState(false);
     const ref = useRef<HTMLDivElement>(null);
 
@@ -137,14 +122,34 @@ function ExperienceCard({ experience }: { experience: Experience }) {
         };
     }, []);
 
-
-
     return (
-        <Card
-            ref={ref}
-            className={`shadow-md rounded-none bg-zinc-800 border-0 transform transition-all duration-700 ease-out
+        <div key={experience.id}
+             ref={ref}
+             className={`flex items-start gap-6 transform transition-all duration-700 ease-out 
         ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
         >
+            {/* Logo section (1/5) */}
+            <div className="w-1/5 flex justify-center">
+                <div className="aspect-square h-45 rounded-lg overflow-hidden shadow-md flex items-center justify-center">
+                    <img
+                        src={`${experience.logoUrl}`}
+                        alt={`${experience.title} logo`}
+                        className="w-full h-full object-contain"
+                    />
+                </div>
+            </div>
+            {/* Card section (4/5) */}
+            <div className="w-4/5 text-left">
+                <ExperienceCard experience={experience} />
+            </div>
+        </div>
+    )
+}
+
+function ExperienceCard({ experience }: { experience: Experience }) {
+    const [open, setOpen] = useState(false)
+    return (
+        <Card className="shadow-md rounded-none bg-zinc-800 border-0">
             <CardHeader>
                 <CardTitle className="text-4xl text-white font-bold">{experience.title}</CardTitle>
                 <CardDescription className="uppercase tracking-wide text-gray-400 font-medium text-lg">
