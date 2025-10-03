@@ -39,17 +39,14 @@ const skills = {
 };
 
 export default function SkillsSection() {
+    const bg =
+        <div className="absolute inset-0 bg-gradient-to-br from-indigo-950 via-zinc-900 to-purple-950 opacity-80" />
     return (
-        <Section id="skills">
-            <div className="absolute inset-0 bg-gradient-to-br from-indigo-950 via-zinc-900 to-purple-950 opacity-80" />
-            <div className="relative z-10">
-            <h2 className="text-5xl font-extrabold mb-6 tracking-tight text-center">
-                Skills
-            </h2>
+        <Section id="skills" title="Skills" background={bg}>
             <div className="space-y-4">
                 {Object.entries(skills).map(([category, items]) => (
                     <div key={category}>
-                        <h3 className="text-2xl font-bold mb-3">{category}</h3>
+                        <h3 className="text-left text-2xl font-bold font-sans mb-3">{category}</h3>
                         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-4">
                             {items.map((skill) => (
                                 <div
@@ -73,7 +70,6 @@ export default function SkillsSection() {
                         </div>
                     </div>
                 ))}
-            </div>
             </div>
         </Section>
     );

@@ -82,13 +82,10 @@ const experiences: Experience[] = [
 ]
 
 export default function ExperienceSection() {
+    const bg =
+        <div className="absolute inset-0 bg-gradient-to-bl from-zinc-950 via-zinc-900 to-indigo-950 opacity-70" />
     return (
-        <Section id="experience">
-            <div className="absolute inset-0 bg-gradient-to-bl from-zinc-950 via-zinc-900 to-indigo-950 opacity-70" />
-            <div className="relative z-10">
-            <h2 className="text-5xl font-extrabold mb-6 tracking-tight text-center">
-                Experience
-            </h2>
+        <Section id="experience" title="Experience" background={bg}>
             <div className="max-w-6xl mx-auto space-y-6">
                 {experiences.map((exp) => (
                     <div key={exp.id} className="flex items-start gap-6">
@@ -108,7 +105,6 @@ export default function ExperienceSection() {
                         </div>
                     </div>
                 ))}
-            </div>
             </div>
         </Section>
     )

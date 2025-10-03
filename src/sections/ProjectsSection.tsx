@@ -61,15 +61,21 @@ const projects: Project[] = [
 
 export default function ProjectsSection() {
     return (
-        <Section id="projects">
-            {/* Animated galaxy gradient */}
-            <Galaxy />
-            <div className="relative z-10">
-            <h2 className="text-5xl font-extrabold mb-6 tracking-tight text-center">
-                Projects
-            </h2>
-                <ProjectsCarousel projects={projects} />
-            </div>
+        <Section id="projects" title="Projects" background={<Galaxy />}>
+            <Carousel className="w-full max-w-6xl mx-auto">
+                <CarouselContent>
+                    {projects.map((project, i) => (
+                        <CarouselItem
+                            key={i}
+                            className="basis-full md:basis-2/3 lg:basis-1/2"
+                        >
+                            <ProjectCard {...project} />
+                        </CarouselItem>
+                    ))}
+                </CarouselContent>
+                <CarouselPrevious className="bg-zinc-800 text-gray-200 hover:bg-zinc-600 hover:text-gray-200 border-0"/>
+                <CarouselNext className="bg-zinc-800 text-gray-200 hover:bg-zinc-600 hover:text-gray-200 border-0"/>
+            </Carousel>
         </Section>
     );
 }
@@ -79,25 +85,6 @@ interface Project {
     tech: string;
     description: string[];
     github: string;
-}
-
-function ProjectsCarousel({ projects }: { projects: Project[] }) {
-    return (
-        <Carousel className="w-full max-w-6xl mx-auto">
-            <CarouselContent>
-                {projects.map((project, i) => (
-                    <CarouselItem
-                        key={i}
-                        className="basis-full md:basis-2/3 lg:basis-1/2"
-                    >
-                        <ProjectCard {...project} />
-                    </CarouselItem>
-                ))}
-            </CarouselContent>
-            <CarouselPrevious className="bg-zinc-800 text-gray-200 hover:bg-zinc-600 hover:text-gray-200 border-0"/>
-            <CarouselNext className="bg-zinc-800 text-gray-200 hover:bg-zinc-600 hover:text-gray-200 border-0"/>
-        </Carousel>
-    );
 }
 
 function ProjectCard({ title, tech, description, github }: Project) {

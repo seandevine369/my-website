@@ -30,15 +30,12 @@ export default function HomeSection() {
     }, []);
 
     return (
-        <Section id="home">
-            <Stars />
-            <div className="relative z-10 text-center">
-                <h1 className="text-5xl font-black font-sans mb-4">Hi, I’m Sean</h1>
-                <p className="text-xl max-w-2xl mx-auto font-mono">
-                    {displayedText}
-                    <span className={`ml-1 ${showCursor ? "opacity-100" : "opacity-0"} inline-block`}>|</span>
-                </p>
-            </div>
+        <Section id="home" background={<Stars />}>
+            <h1 className="text-5xl font-black font-sans mb-4">Hi, I’m Sean</h1>
+            <p className="text-xl max-w-2xl mx-auto font-mono">
+                {displayedText}
+                <span className={`ml-1 ${showCursor ? "opacity-100" : "opacity-0"} inline-block`}>|</span>
+            </p>
         </Section>
     );
 }

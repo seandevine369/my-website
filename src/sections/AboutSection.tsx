@@ -1,15 +1,11 @@
 import Section from "../components/Section";
 
 export default function AboutSection() {
+    const bg =
+        <div className="absolute inset-0 bg-gradient-to-r from-zinc-900 via-zinc-950 to-black opacity-95" />
     return (
-        <Section id="about">
-            <div className="absolute inset-0 bg-gradient-to-r from-zinc-900 via-zinc-950 to-black opacity-95" />
-            <div className="relative z-10">
+        <Section id="about" title="About Me" background={bg}>
             <div className="px-12 md:px-32 py-16">
-                {/* Centered Heading */}
-                <h2 className="text-5xl font-extrabold mb-12 tracking-tight text-center">
-                    About Me
-                </h2>
 
                 {/* Flex Layout: Text + Image */}
                 <div className="flex flex-col md:flex-row items-center md:items-start gap-16">
@@ -31,7 +27,6 @@ export default function AboutSection() {
                         />
                     </div>
                 </div>
-            </div>
             </div>
         </Section>
     );

@@ -53,27 +53,25 @@ function ContactLink({ href, label, icon: Icon, target }: ContactLinkProps) {
 }
 
 export default function ContactSection() {
-    return (
-        <Section id="contact">
+    const bg =
+        <>
             <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-indigo-950 to-black opacity-90" />
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/30 via-transparent to-transparent" />
-            <div className="relative z-10">
-                <h2 className="text-5xl font-extrabold mb-12 tracking-tight text-center">
-                    Contact Me
-                </h2>
-                <p className="text-center text-lg mb-8 text-zinc-400">
-                    Based in Toronto, Canada 🍁 — feel free to reach out!
-                </p>
+        </>
+    return (
+        <Section id="contact" title="Contact Me" background={bg}>
+            <p className="text-center text-lg mb-8 text-zinc-400">
+                Based in Toronto, Canada 🍁 — feel free to reach out!
+            </p>
 
-                <div className="flex flex-wrap justify-center gap-4 mb-12">
-                    {links.map((link) => (
-                        <ContactLink key={link.label} {...link} />
-                    ))}
-                </div>
-
-                <ContactForm />
-                <Footer />
+            <div className="flex flex-wrap justify-center gap-4 mb-12">
+                {links.map((link) => (
+                    <ContactLink key={link.label} {...link} />
+                ))}
             </div>
+
+            <ContactForm />
+            <Footer />
         </Section>
     );
 }
