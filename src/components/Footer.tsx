@@ -1,6 +1,6 @@
 export default function Footer() {
     return (
-        <footer className="bg-black text-gray-200 p-1">
+        <footer className="text-gray-200 bottom-0 w-full p-1">
             <div className="container mx-auto text-center">
                 <span>
                     Copyright © {new Date().getFullYear()}

@@ -1,5 +1,6 @@
 import Section from "../components/Section";
 import { Mail, Linkedin, Github, FileText } from "lucide-react";
+import Footer from "@/components/Footer.tsx";
 
 export default function ContactSection() {
     return (
@@ -102,6 +103,7 @@ export default function ContactSection() {
                     Send Message
                 </button>
             </form>
+                <Footer />
             </div>
         </Section>
     );

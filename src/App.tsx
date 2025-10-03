@@ -1,5 +1,4 @@
 import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
 import HomeSection from "./sections/HomeSection";
 import AboutSection from "./sections/AboutSection";
 import ProjectsSection from "./sections/ProjectsSection";
@@ -19,7 +18,6 @@ export default function App() {
                 <SkillsSection />
                 <ContactSection />
             </main>
-            <Footer />
         </div>
     );
 }
