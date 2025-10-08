@@ -1,5 +1,3 @@
-"use client"
-
 import { useState, useRef, useEffect } from "react";
 import Section from "../components/Section";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
@@ -88,39 +86,38 @@ export default function ExperienceSection() {
         <Section id="experience" title="Experience" background={bg}>
             <div className="max-w-6xl mx-auto space-y-6">
                 {experiences.map((exp) => (
-                    <ExperienceItem experience={exp} />
+                    <ExperienceItem key={exp.id} experience={exp} />
                 ))}
             </div>
         </Section>
     )
 }
 
-function ExperienceItem({ experience }: { experience: Experience }) {
-
+function useInView(threshold = 0, rootMargin = "0% 0% -13% 0%") {
     const [visible, setVisible] = useState(false);
     const ref = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
-                entries.forEach((entry) => {
-                    setVisible(entry.isIntersecting);
-                });
+                entries.forEach((entry) => setVisible(entry.isIntersecting));
             },
-            {
-                threshold: 0,
-                rootMargin: "0% 0% -13% 0%",
-            }
+            { threshold, rootMargin }
         );
 
-        const el = ref.current; // copy once
-
+        const el = ref.current;
         if (el) observer.observe(el);
 
         return () => {
-            if (el) observer.unobserve(el); // use the stable reference
+            if (el) observer.unobserve(el);
         };
-    }, []);
+    }, [threshold, rootMargin]);
+
+    return { ref, visible };
+}
+
+function ExperienceItem({ experience }: { experience: Experience }) {
+    const { ref, visible } = useInView();
 
     return (
         <div key={experience.id}
@@ -150,16 +147,18 @@ function ExperienceCard({ experience }: { experience: Experience }) {
     const [open, setOpen] = useState(false)
     return (
         <Card className="shadow-md rounded-none bg-zinc-800 border-0">
+
             <CardHeader>
                 <CardTitle className="text-4xl text-white font-bold">{experience.title}</CardTitle>
                 <CardDescription className="uppercase tracking-wide text-gray-400 font-medium text-lg">
                     {experience.subtitle}
                 </CardDescription>
             </CardHeader>
+
             <CardContent>
                 <p className="text-gray-200 text-lg mb-3">{experience.summary}</p>
                 <Collapsible open={open} onOpenChange={setOpen}>
-                    <CollapsibleContent className="overflow-hidden transition-all duration-1000 data-[state=closed]:animate-collapse-up data-[state=open]:animate-collapse-down">
+                    <CollapsibleContent className="overflow-hidden">
                         <div className="list-disc list-inside space-y-1 text-gray-200 text-lg mb-3">
                             {experience.details.map((d, i) => (
                                 <p key={i}>{d}</p>
