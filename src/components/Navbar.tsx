@@ -15,7 +15,7 @@ export default function Navbar() {
                 <Logo
                     className="h-5 w-auto cursor-pointer"
                     onClick={() =>
-                        window.scrollTo({ top: 0, left: 0, behavior: "smooth" })
+                        window.scrollTo({ top: 0, left: 0 })
                     }
                 />
                 <div className="text-white space-x-6">
