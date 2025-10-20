@@ -5,7 +5,7 @@ import Section from "../components/Section";
 import Stars from "../components/Stars";
 
 export default function HomeSection() {
-    const fullText = "I'm a Waterloo CS graduate based in Toronto. Scroll down to see my work.";
+    const fullText = "I'm a Waterloo CS graduate based in Toronto";
     const [displayedText, setDisplayedText] = useState("");
     const [showCursor, setShowCursor] = useState(true);
 
