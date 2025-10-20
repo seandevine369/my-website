@@ -4,8 +4,9 @@ interface SectionProps {
     id: string;
     children: React.ReactNode;
     className?: string;
-    title?: string; // optional title
-    background?: React.ReactNode; // optional background, e.g., a div with gradient or animation
+    title?: string;
+    background?: React.ReactNode;
+    sticky?: boolean;
 }
 
 export default function Section({
@@ -14,27 +15,34 @@ export default function Section({
                                     className = "",
                                     title = "",
                                     background,
+                                    sticky = true,
                                 }: SectionProps) {
     return (
-        <section
+        <div
+            data-scroll
             id={id}
-            className={`flex flex-col justify-center items-center py-24 overflow-hidden relative snap-start min-h-screen ${className}`}
+            className={`relative ${
+                sticky ? "min-h-[325vh] md:min-h-[175vh]" : "min-h-screen"
+            } ${className}`}
         >
-            {/* Render background if provided */}
-            {background && <>{background}</>}
+            {/* Background */}
+            {background && <div className="absolute inset-0 z-0">{background}</div>}
 
-            {/* Main content */}
-            <div className="relative z-10 text-center">
-                {title && (
-                    <h2 className="text-5xl font-extrabold mb-12 tracking-tight">{title}</h2>
-                )}
-                {children}
+            {/* Sticky Wrapper */}
+            <div
+                className={`${
+                    sticky ? "sticky top-0" : "relative"
+                } flex flex-col justify-center items-center text-center min-h-screen`}
+            >
+                <div className="relative z-10 px-6 py-24">
+                    {title && (
+                        <h2 className="text-5xl font-extrabold mb-12 tracking-tight">
+                            {title}
+                        </h2>
+                    )}
+                    {children}
+                </div>
             </div>
-        </section>
+        </div>
     );
-}
-interface SectionProps {
-    id: string;
-    children: React.ReactNode;
-    className?: string;
 }

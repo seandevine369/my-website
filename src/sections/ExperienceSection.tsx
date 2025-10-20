@@ -83,7 +83,7 @@ export default function ExperienceSection() {
     const bg =
         <div className="absolute inset-0 bg-gradient-to-bl from-zinc-950 via-zinc-900 to-indigo-950 opacity-70" />
     return (
-        <Section id="experience" title="Experience" background={bg}>
+        <Section id="experience" title="Experience" background={bg} sticky={true}>
             <div className="max-w-6xl mx-auto space-y-6">
                 {experiences.map((exp) => (
                     <ExperienceItem key={exp.id} experience={exp} />
