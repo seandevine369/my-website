@@ -60,10 +60,6 @@ export default function ContactSection() {
         </>
     return (
         <Section id="contact" title="Contact Me" background={bg}>
-            <p className="text-center text-lg mb-8 text-zinc-400">
-                Based in Toronto, Canada 🍁 — feel free to reach out!
-            </p>
-
             <div className="flex flex-wrap justify-center gap-4 mb-12">
                 {links.map((link) => (
                     <ContactLink key={link.label} {...link} />
@@ -71,6 +67,7 @@ export default function ContactSection() {
             </div>
 
             <ContactForm />
+            <br/>
             <Footer />
         </Section>
     );
