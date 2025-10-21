@@ -73,8 +73,8 @@ export default function ProjectsSection() {
                         </CarouselItem>
                     ))}
                 </CarouselContent>
-                <CarouselPrevious className="bg-zinc-800 text-gray-200 hover:bg-zinc-600 hover:text-gray-200 border-0"/>
-                <CarouselNext className="bg-zinc-800 text-gray-200 hover:bg-zinc-600 hover:text-gray-200 border-0"/>
+                <CarouselPrevious className="w-16 h-16 -translate-x-6 bg-zinc-800 text-gray-200 hover:bg-zinc-600 hover:text-gray-200 border-0"/>
+                <CarouselNext className="w-16 h-16 translate-x-6 bg-zinc-800 text-gray-200 hover:bg-zinc-600 hover:text-gray-200 border-0"/>
             </Carousel>
         </Section>
     );
