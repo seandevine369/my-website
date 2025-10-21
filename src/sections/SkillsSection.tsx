@@ -6,9 +6,8 @@ const skills = {
         { name: "TypeScript", logoUrl: "https://cdn.simpleicons.org/typescript" },
         { name: "Python", logoUrl: "https://cdn.simpleicons.org/python" },
         { name: "C++", logoUrl: "https://cdn.simpleicons.org/cplusplus" },
-        { name: "Java", logoUrl: "https://iconduck.com/icons/80665/java" }, // fallback
+        { name: "Java", logoUrl: "https://www.vectorlogo.zone/logos/java/java-icon.svg" }, // fallback
         { name: "Kotlin", logoUrl: "https://cdn.simpleicons.org/kotlin" },
-        { name: "SQL", logoUrl: "https://cdn.simpleicons.org/mysql" },
         { name: "HTML/CSS", logoUrl: "https://cdn.simpleicons.org/html5" },
     ],
     Frameworks: [
@@ -18,23 +17,15 @@ const skills = {
         { name: "Tailwind CSS", logoUrl: "https://cdn.simpleicons.org/tailwindcss" },
         { name: "Bootstrap", logoUrl: "https://cdn.simpleicons.org/bootstrap" },
         { name: "Prisma", logoUrl: "https://cdn.simpleicons.org/prisma" },
-    ],
-    Testing: [
         { name: "Jest", logoUrl: "https://cdn.simpleicons.org/jest" },
-        { name: "Supertest", logoUrl: null }, // no reliable icon found
-        { name: "JUnit", logoUrl: null }, // fallback to text
     ],
     Infrastructure: [
-        { name: "AWS EC2", logoUrl: "https://commons.wikimedia.org/wiki/File:Amazon_EC2_Logo.svg" },
-        { name: "AWS S3", logoUrl: "https://commons.wikimedia.org/wiki/File:AWS_Simple_Icons_Storage_Amazon_S3.svg" },
+        { name: "AWS EC2", logoUrl: "https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg" },
+        { name: "AWS S3", logoUrl: "https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg" },
+        { name: "AWS RDS", logoUrl: "https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg" },
         { name: "Docker", logoUrl: "https://cdn.simpleicons.org/docker" },
-        { name: "CI/CD", logoUrl: "https://cdn.simpleicons.org/gitlab" }, // or use a specific CI tool icon
         { name: "GraphQL", logoUrl: "https://cdn.simpleicons.org/graphql" },
-        { name: "REST APIs", logoUrl: null }, // generic, could use API icon
-    ],
-    Databases: [
         { name: "PostgreSQL", logoUrl: "https://cdn.simpleicons.org/postgresql" },
-        { name: "AWS RDS", logoUrl: "https://commons.wikimedia.org/wiki/File:AWS_Simple_Icons_Database_Amazon_RDS_Oracle_DB_Instance.svg" },
     ],
 };
 
@@ -57,7 +48,7 @@ export default function SkillsSection() {
                                         <img
                                             src={skill.logoUrl}
                                             alt={skill.name}
-                                            className="w-12 h-12 mb-2 object-contain"
+                                            className="w-18 h-18 mb-2 object-contain"
                                             onError={(e) => {
                                                 // fallback: hide broken image
                                                 (e.currentTarget as HTMLImageElement).style.display = "none";
