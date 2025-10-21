@@ -37,7 +37,7 @@ const projects: Project[] = [
             "Developed a real-time backend using Node.js, Express, and GraphQL with PostgreSQL.",
             "Implemented modular SQL models, connection pooling, and Jest/Supertest integration tests.",
         ],
-        github: "https://github.com/dummy3",
+        github: "https://github.com/seandevine369/real-time-task-manager",
     },
     {
         title: "OS/161 Enhancements Project",
@@ -55,7 +55,7 @@ const projects: Project[] = [
             "Built a two-player Tetris variant with difficulty toggles & gameplay boosts.",
             "Applied OOP design with Observer/Factory patterns, dynamic memory management, and UML-driven design.",
         ],
-        github: "https://github.com/dummy5",
+        github: "https://github.com/seandevine369/biquadris",
     },
 ];
 
