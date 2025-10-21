@@ -17,13 +17,13 @@ const links = [
         target: "_blank",
     },
     {
-        href: "https://github.com/seandevine",
+        href: "https://github.com/seandevine369",
         label: "GitHub",
         icon: Github,
         target: "_blank",
     },
     {
-        href: "/resume.pdf",
+        href: "/Sean_Devine.pdf",
         label: "Resume",
         icon: FileText,
         target: "_blank",
