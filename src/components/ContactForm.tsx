@@ -1,13 +1,18 @@
 export default function ContactForm() {
     return (
         <form
-            className="w-full max-w-2xl mx-auto bg-zinc-900/80 p-10 rounded-2xl shadow-lg border border-zinc-700 space-y-6">
+            action="https://formspree.io/f/mqayobdp"
+            method="POST"
+            className="w-full max-w-2xl mx-auto bg-zinc-900/80 p-10 rounded-2xl shadow-lg border border-zinc-700 space-y-6"
+        >
             <h3 className="text-2xl font-semibold text-center mb-6">Get in Touch</h3>
 
             <div>
                 <label className="block mb-2 text-sm text-left font-bold text-zinc-300">Name</label>
                 <input
                     type="text"
+                    name="name"
+                    required
                     className="w-full p-3 rounded-lg bg-zinc-800 border border-zinc-700
                                focus:border-blue-500 focus:ring-2 focus:ring-blue-500 outline-none"
                     placeholder="Your name"
@@ -18,6 +23,8 @@ export default function ContactForm() {
                 <label className="block mb-2 text-left text-sm font-bold text-zinc-300">Email</label>
                 <input
                     type="email"
+                    name="email"
+                    required
                     className="w-full p-3 rounded-lg bg-zinc-800 border border-zinc-700
                                focus:border-blue-500 focus:ring-2 focus:ring-blue-500 outline-none"
                     placeholder="you@example.com"
@@ -27,6 +34,8 @@ export default function ContactForm() {
             <div>
                 <label className="block mb-2 text-left text-sm font-bold text-zinc-300">Message</label>
                 <textarea
+                    name="message"
+                    required
                     className="w-full p-3 rounded-lg bg-zinc-800 border border-zinc-700
                                focus:border-blue-500 focus:ring-2 focus:ring-blue-500 outline-none"
                     rows={5}
