@@ -22,25 +22,11 @@ export default function AboutSection() {
                     {/* Text */}
                     <div className="flex-1 text-center md:text-left">
                         <p className="max-w-3xl mx-auto text-s sm:text-m md:text-l lg:text-xl leading-relaxed">
-                            I’m a {age} year old software developer with a passion for math,
-                            science and understanding how the world works. In my free time you'll
-                            probably find me playing guitar, learning about chess, or lifting
-                            weights in the gym.
-                            <br />
-                            <br />
-                            I am motivated in life by making progress; whether
-                            that be in my career, in my hobbies, in my relationships or in the world,
-                            I am always looking for ways to do things better. I love analysing things,
-                            sometimes beyond what is necessary and enjoy the process of gaining a deep
-                            understanding of how things work. I try my best to get many perspectives on
-                            ideas and think it is important to be exposed to differing opinions to
-                            refine ideas
-                            <br />
-                            <br />
-                            Progress iterations, learning / understanding, discussion / perspectives no
-                            matter from who, always a way to do things better; you can never be too efficient,
-                            just optimising for the wrong variables, important to put your foot down when you
-                            know your right; there could be lots of other people quietly thinking the same thing, comfort
+                            I’m a {age}-year-old software developer with a passion for math, science, and understanding how the world works. When I’m not coding, you’ll probably find me playing guitar, exploring chess strategies, reading about science and technology, or lifting weights at the gym.
+                            <br /><br />
+                            I’m motivated by progress—both personal and professional. I enjoy analyzing systems, breaking down problems, and figuring out how to make things more efficient or effective. Sometimes that means experimenting until I get it right; often times it’s learning from others’ perspectives to refine my own thinking. I value discussion and diverse opinions because they often reveal insights you wouldn’t find on your own. I find that many times the best ideas can come from the people you expect the least.
+                            <br /><br />
+                            Ultimately, I’m always looking for ways to learn, grow, and understand more deeply. Whether through code, music, strategy games, or conversation, I enjoy the challenge of figuring out how things work and finding better ways to do them.
                         </p>
                     </div>
 
