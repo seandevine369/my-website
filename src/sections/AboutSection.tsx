@@ -2,7 +2,7 @@ import Section from "../components/Section";
 
 export default function AboutSection() {
     const bg =
-        <div className="absolute inset-0 bg-gradient-to-r from-zinc-900 via-zinc-950 to-black opacity-95" />
+        <div className="absolute inset-0 bg-gradient-to-r from-zinc-800 via-zinc-900 to-black opacity-95" />
 
     /* Calculate age dynamically */
     const birthDate = new Date("2002-10-10");
