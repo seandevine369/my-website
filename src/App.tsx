@@ -6,24 +6,29 @@ import ContactSection from "./sections/ContactSection";
 import ExperienceSection from "./sections/ExperienceSection";
 import SkillsSection from "./sections/SkillsSection";
 import React, { useEffect } from "react";
-import ReactDOM from "react-dom";
-import locomotiveScroll from "locomotive-scroll";
+import LocomotiveScroll from "locomotive-scroll";
 import 'locomotive-scroll/dist/locomotive-scroll.css'
 
 
 export default function App() {
-    const scrollRef = React.createRef();
+    const scrollRef = React.createRef<HTMLDivElement>();
 
     useEffect(() => {
-        const scroll = new locomotiveScroll({
-            el: scrollRef.current,
+        if (!scrollRef.current) return;
+
+        const scroll = new LocomotiveScroll({
+            el: scrollRef.current!,
             smooth: true,
             smoothMobile: true,
             inertia: 0.01, // lower = more floaty, 1 = instant
             getDirection: true,
             getSpeed: true,
-        });
-    });
+        } as any);
+
+        return () => {
+            scroll.destroy();
+        };
+    }, []);
 
     return (
         <div>
