@@ -159,11 +159,13 @@ function ExperienceCard({ experience }: { experience: Experience }) {
                 <p className="text-gray-200 text-lg mb-3">{experience.summary}</p>
                 <Collapsible open={open} onOpenChange={setOpen}>
                     <CollapsibleContent className="overflow-hidden">
-                        <div className="list-disc list-inside space-y-1 text-gray-200 text-lg mb-3">
+                        <ul className="list-disc list-outside pl-6 text-gray-200 text-lg mb-3">
                             {experience.details.map((d, i) => (
-                                <p key={i}>{d}</p>
+                                <li key={i} className="ml-0">
+                                    {d}
+                                </li>
                             ))}
-                        </div>
+                        </ul>
                     </CollapsibleContent>
                     <Button
                         variant="ghost"
