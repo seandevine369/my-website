@@ -122,3 +122,12 @@
     @apply bg-black text-gray-100 overscroll-none;
   }
 }
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 0.3; }
+}
+
+.animate-twinkle {
+  animation: twinkle ease-in-out infinite;
+}
