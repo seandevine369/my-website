@@ -54,7 +54,7 @@ function ContactLink({ href, label, icon: Icon, target }: ContactLinkProps) {
 export default function ContactSection() {
     return (
         <Section id="contact" title="Get In Touch" sticky={false} background={<FloatingParticles count={20} />}>
-            <p className="text-gray-400 mb-10 max-w-md mx-auto">
+            <p className="text-sm sm:text-base text-gray-400 mb-10 max-w-sm sm:max-w-md mx-auto">
                 Feel free to reach out — I'm always open to new opportunities and conversations.
             </p>
             <div className="flex flex-wrap justify-center gap-4">

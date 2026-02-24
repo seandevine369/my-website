@@ -40,7 +40,7 @@ export default function ContactForm() {
     return (
         <form
             onSubmit={handleSubmit}
-            className="w-full max-w-2xl mx-auto bg-zinc-900/80 p-10 rounded-2xl shadow-lg border border-zinc-700 space-y-6"
+            className="w-full max-w-2xl mx-auto bg-zinc-900/80 p-5 sm:p-8 md:p-10 rounded-2xl shadow-lg border border-zinc-700 space-y-6"
         >
             <h3 className="text-2xl font-semibold text-center mb-6">Get in Touch</h3>
 
@@ -75,7 +75,7 @@ export default function ContactForm() {
                     required
                     className="w-full p-3 rounded-lg bg-zinc-800 border border-zinc-700
                                focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500 outline-none"
-                    rows={5}
+                    rows={4}
                     placeholder="Write your message..."
                 ></textarea>
             </div>

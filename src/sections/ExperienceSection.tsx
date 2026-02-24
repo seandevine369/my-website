@@ -78,10 +78,10 @@ export default function ExperienceSection() {
     return (
         <Section id="experience" title="Experience" background={<FloatingParticles count={25} color="bg-green-400" maxSize={1.5} />}>
             <div className="max-w-4xl mx-auto relative">
-                {/* Timeline line */}
-                <div className="absolute left-12 top-0 bottom-0 border-l-2 border-zinc-700" />
+                {/* Timeline line — hidden on mobile */}
+                <div className="absolute left-8 sm:left-12 top-0 bottom-0 border-l-2 border-zinc-700 hidden sm:block" />
 
-                <div className="space-y-12">
+                <div className="space-y-8 sm:space-y-12">
                     {experiences.map((exp, index) => (
                         <ExperienceItem key={exp.id} experience={exp} index={index} />
                     ))}
@@ -97,13 +97,13 @@ function ExperienceItem({ experience, index }: { experience: Experience; index: 
     return (
         <div
             ref={ref}
-            className={`relative flex items-start gap-6 transform transition-all duration-700 ease-out
+            className={`relative flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6 transform transition-all duration-700 ease-out
                 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
             style={{ transitionDelay: `${index * 100}ms` }}
         >
             {/* Logo node on the timeline */}
             <div className="relative z-10 flex-shrink-0">
-                <div className={`w-24 h-24 rounded-full ${experience.logoBg ?? "bg-white"} p-2.5 ring-4 ring-zinc-900 flex items-center justify-center`}>
+                <div className={`w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full ${experience.logoBg ?? "bg-white"} p-2 sm:p-2.5 ring-4 ring-zinc-900 flex items-center justify-center`}>
                     <img
                         src={experience.logoUrl}
                         alt={`${experience.title} logo`}
@@ -113,13 +113,13 @@ function ExperienceItem({ experience, index }: { experience: Experience; index: 
             </div>
 
             {/* Content */}
-            <div className="text-left pb-2 pt-1 rounded-xl px-4 py-3 transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.03] hover:border-green-500/20 border border-transparent">
-                <h3 className="text-2xl font-bold text-white">{experience.title}</h3>
-                <p className="text-sm md:text-base text-gray-400 uppercase tracking-wide">{experience.subtitle}</p>
-                <p className="text-base text-gray-300 mt-2 leading-relaxed">{experience.summary}</p>
-                <ul className="list-disc list-outside pl-5 mt-3 space-y-1.5">
+            <div className="text-center sm:text-left pb-2 pt-1 rounded-xl px-3 sm:px-4 py-3 transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.03] hover:border-green-500/20 border border-transparent">
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white">{experience.title}</h3>
+                <p className="text-xs sm:text-sm md:text-base text-gray-400 uppercase tracking-wide">{experience.subtitle}</p>
+                <p className="text-sm sm:text-base text-gray-300 mt-2 leading-relaxed">{experience.summary}</p>
+                <ul className="list-disc list-outside pl-5 mt-3 space-y-1.5 text-left">
                     {experience.details.map((d, i) => (
-                        <li key={i} className="text-sm md:text-base text-gray-400 leading-relaxed">{d}</li>
+                        <li key={i} className="text-xs sm:text-sm md:text-base text-gray-400 leading-relaxed">{d}</li>
                     ))}
                 </ul>
             </div>

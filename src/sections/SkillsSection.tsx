@@ -49,7 +49,7 @@ function SkillCategory({ category, items, index }: { category: string; items: { 
                             <img
                                 src={skill.logoUrl}
                                 alt={skill.name}
-                                className="w-18 h-18 mb-2 object-contain"
+                                className="w-12 sm:w-16 md:w-18 h-12 sm:h-16 md:h-18 mb-2 object-contain"
                                 onError={(e) => {
                                     (e.currentTarget as HTMLImageElement).style.display = "none";
                                 }}

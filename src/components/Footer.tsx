@@ -40,7 +40,7 @@ export default memo(function Footer() {
             ))}
 
             {/* Green accent line */}
-            <div className="mx-auto max-w-xl h-px bg-gradient-to-r from-transparent via-green-400/50 to-transparent" />
+            <div className="mx-auto max-w-xs sm:max-w-xl h-px bg-gradient-to-r from-transparent via-green-400/50 to-transparent" />
 
             {/* Text */}
             <div className="relative z-10 py-8 text-center">
