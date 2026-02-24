@@ -15,14 +15,14 @@ export default function Section({
                                     className = "",
                                     title = "",
                                     background,
-                                    sticky = true,
+                                    sticky = false,
                                 }: SectionProps) {
     return (
         <div
             data-scroll
             id={id}
             className={`relative ${
-                sticky ? "min-h-[325vh] md:min-h-[175vh]" : "min-h-screen"
+                sticky ? "min-h-[325vh] md:min-h-[175vh]" : ""
             } ${className}`}
         >
             {/* Background */}
@@ -31,18 +31,26 @@ export default function Section({
             {/* Sticky Wrapper */}
             <div
                 className={`${
-                    sticky ? "sticky top-0" : "relative"
-                } flex flex-col justify-center items-center text-center min-h-screen`}
+                    sticky ? "sticky top-0 min-h-screen" : "relative"
+                } flex flex-col justify-center items-center text-center`}
             >
-                <div className="relative z-10 px-6 py-24">
+                <div className="relative z-10 px-6 py-14 md:py-20">
                     {title && (
-                        <h2 className="text-5xl font-extrabold mb-12 tracking-tight">
-                            {title}
-                        </h2>
+                        <div className="relative mb-12">
+                            {/* Faint radial glow behind heading */}
+                            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-32 bg-green-500/[0.07] rounded-full blur-3xl pointer-events-none" />
+                            <h2 className="relative text-3xl md:text-4xl font-semibold tracking-wide text-white/90 uppercase font-['Space_Grotesk']">
+                                {title}
+                            </h2>
+                            <div className="relative mt-3 mx-auto w-12 h-0.5 rounded-full bg-green-400/50" />
+                        </div>
                     )}
                     {children}
                 </div>
             </div>
+
+            {/* Gradient section divider */}
+            <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-green-400/20 to-transparent" />
         </div>
     );
 }

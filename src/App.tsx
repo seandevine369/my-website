@@ -1,17 +1,17 @@
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import HomeSection from "./sections/HomeSection";
 import AboutSection from "./sections/AboutSection";
 import ProjectsSection from "./sections/ProjectsSection";
 import ContactSection from "./sections/ContactSection";
 import ExperienceSection from "./sections/ExperienceSection";
-import SkillsSection from "./sections/SkillsSection";
-import React, { useEffect } from "react";
+import { useRef, useEffect } from "react";
 import LocomotiveScroll from "locomotive-scroll";
 import 'locomotive-scroll/dist/locomotive-scroll.css'
 
 
 export default function App() {
-    const scrollRef = React.createRef<HTMLDivElement>();
+    const scrollRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         if (!scrollRef.current) return;
@@ -34,13 +34,13 @@ export default function App() {
         <div>
             <div data-scroll-container className="scroll" ref={scrollRef}>
             <Navbar />
-            <main className="flex-grow h-screen ">
+            <main className="flex-grow" style={{ background: 'linear-gradient(180deg, #000000 0%, #000000 10%, #0f172a 25%, #1e293b 45%, #172554 60%, #0f172a 80%, #000000 100%)' }}>
                 <HomeSection />
                 <AboutSection />
                 <ExperienceSection />
                 <ProjectsSection />
-                <SkillsSection />
                 <ContactSection />
+                <Footer />
             </main>
             </div>
         </div>
