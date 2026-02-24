@@ -85,8 +85,8 @@ export default function ProjectsSection() {
                                 </Button>
                             </div>
 
-                            {/* Phone screenshots */}
-                            <div className="flex items-end justify-center gap-3 flex-1">
+                            {/* Phone screenshots — only on md+ where side-by-side layout works */}
+                            <div className="hidden md:flex items-end justify-center gap-3 flex-1">
                                 {[
                                     { src: "/voluntus-dashboard.jpg", alt: "Voluntus dashboard" },
                                     { src: "/voluntus-loghours.jpg", alt: "Voluntus log hours" },
@@ -94,7 +94,7 @@ export default function ProjectsSection() {
                                 ].map((img, i) => (
                                     <div
                                         key={i}
-                                        className={`w-28 md:w-32 shrink-0 ${i === 1 ? "-mb-2" : ""}`}
+                                        className={`w-24 sm:w-28 md:w-32 shrink-0 ${i === 1 ? "-mb-2" : ""}`}
                                     >
                                         <div className="rounded-[1.2rem] overflow-hidden border-2 border-zinc-700/80 shadow-lg shadow-green-500/5">
                                             <img src={img.src} alt={img.alt} className="w-full h-auto" />
@@ -106,18 +106,25 @@ export default function ProjectsSection() {
                     </div>
                 </div>
 
-                {/* Other projects — carousel */}
-                <Carousel className="w-full" opts={{ align: "start" }}>
-                    <CarouselContent className="-ml-4">
-                        {projects.map((project, i) => (
-                            <CarouselItem key={i} className="pl-4 basis-full sm:basis-1/2 lg:basis-1/3">
-                                <ProjectCard {...project} />
-                            </CarouselItem>
-                        ))}
-                    </CarouselContent>
-                    <CarouselPrevious className="w-10 h-10 -translate-x-4 bg-zinc-800/80 text-gray-300 hover:bg-zinc-700 hover:text-white border border-zinc-700/50" />
-                    <CarouselNext className="w-10 h-10 translate-x-4 bg-zinc-800/80 text-gray-300 hover:bg-zinc-700 hover:text-white border border-zinc-700/50" />
-                </Carousel>
+                {/* Other projects — stacked on mobile, carousel on sm+ */}
+                <div className="sm:hidden space-y-4">
+                    {projects.map((project, i) => (
+                        <ProjectCard key={i} {...project} />
+                    ))}
+                </div>
+                <div className="hidden sm:block">
+                    <Carousel className="w-full" opts={{ align: "start" }}>
+                        <CarouselContent className="-ml-4">
+                            {projects.map((project, i) => (
+                                <CarouselItem key={i} className="pl-4 sm:basis-1/2 lg:basis-1/3">
+                                    <ProjectCard {...project} />
+                                </CarouselItem>
+                            ))}
+                        </CarouselContent>
+                        <CarouselPrevious className="w-10 h-10 -translate-x-4 bg-zinc-800/80 text-gray-300 hover:bg-zinc-700 hover:text-white border border-zinc-700/50" />
+                        <CarouselNext className="w-10 h-10 translate-x-4 bg-zinc-800/80 text-gray-300 hover:bg-zinc-700 hover:text-white border border-zinc-700/50" />
+                    </Carousel>
+                </div>
             </div>
         </Section>
     );
