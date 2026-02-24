@@ -13,7 +13,10 @@ export default memo(function FloatingParticles({
     maxSize = 2,
 }: FloatingParticlesProps) {
     const particles = useMemo(() => {
-        return Array.from({ length: count }, (_, i) => ({
+        // Reduce particle count on mobile for performance
+        const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+        const actualCount = isMobile ? Math.min(count, 12) : count;
+        return Array.from({ length: actualCount }, (_, i) => ({
             id: i,
             top: `${Math.random() * 100}%`,
             left: `${Math.random() * 100}%`,

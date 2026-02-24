@@ -21,13 +21,13 @@ export default memo(function ShootingStars() {
                     style={{
                         top: s.top,
                         left: s.left,
-                        width: s.width,
+                        width: s.width * 0.6,
                         height: i % 2 === 0 ? 1 : 2,
                         rotate: s.rotation,
                     }}
                     animate={{
-                        x: [0, 300],
-                        y: [0, 150],
+                        x: [0, 150],
+                        y: [0, 75],
                         opacity: [0, 1, 1, 0],
                     }}
                     transition={{

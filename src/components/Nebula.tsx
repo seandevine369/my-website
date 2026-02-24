@@ -2,11 +2,11 @@ import { memo } from "react";
 import { motion } from "framer-motion";
 
 const ORBS = [
-    { color: "bg-purple-800/20", size: 600, top: "10%", left: "5%", duration: 20 },
-    { color: "bg-green-900/15", size: 500, top: "40%", left: "60%", duration: 25 },
-    { color: "bg-blue-800/20", size: 700, top: "45%", left: "20%", duration: 18 },
-    { color: "bg-indigo-900/[0.18]", size: 450, top: "15%", left: "70%", duration: 27 },
-    { color: "bg-emerald-950/[0.12]", size: 400, top: "55%", left: "45%", duration: 15 },
+    { color: "bg-purple-800/20", size: 600, mobileSize: 250, top: "10%", left: "5%", duration: 20 },
+    { color: "bg-green-900/15", size: 500, mobileSize: 220, top: "40%", left: "60%", duration: 25 },
+    { color: "bg-blue-800/20", size: 700, mobileSize: 280, top: "45%", left: "20%", duration: 18 },
+    { color: "bg-indigo-900/[0.18]", size: 450, mobileSize: 200, top: "15%", left: "70%", duration: 27 },
+    { color: "bg-emerald-950/[0.12]", size: 400, mobileSize: 180, top: "55%", left: "45%", duration: 15 },
 ];
 
 export default memo(function Nebula() {
@@ -17,8 +17,8 @@ export default memo(function Nebula() {
                     key={i}
                     className={`absolute rounded-full ${orb.color} mix-blend-screen pointer-events-none`}
                     style={{
-                        width: orb.size,
-                        height: orb.size,
+                        width: `clamp(${orb.mobileSize}px, 40vw, ${orb.size}px)`,
+                        height: `clamp(${orb.mobileSize}px, 40vw, ${orb.size}px)`,
                         top: orb.top,
                         left: orb.left,
                         filter: "blur(100px)",
@@ -38,7 +38,7 @@ export default memo(function Nebula() {
 
             {/* Horizontal accent glow band */}
             <motion.div
-                className="absolute left-0 w-full h-[120px] bg-gradient-to-r from-transparent via-blue-800/10 to-transparent mix-blend-screen pointer-events-none"
+                className="absolute left-0 w-full h-[80px] md:h-[120px] bg-gradient-to-r from-transparent via-blue-800/10 to-transparent mix-blend-screen pointer-events-none"
                 style={{
                     top: "45%",
                     filter: "blur(80px)",

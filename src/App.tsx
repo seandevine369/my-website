@@ -16,11 +16,14 @@ export default function App() {
     useEffect(() => {
         if (!scrollRef.current) return;
 
+        // Disable Locomotive Scroll on mobile — native scroll is smoother
+        const isMobile = window.innerWidth < 768;
+        if (isMobile) return;
+
         const scroll = new LocomotiveScroll({
             el: scrollRef.current!,
             smooth: true,
-            smoothMobile: true,
-            inertia: 0.01, // lower = more floaty, 1 = instant
+            inertia: 0.01,
             getDirection: true,
             getSpeed: true,
         } as any);
@@ -34,7 +37,7 @@ export default function App() {
         <div>
             <div data-scroll-container className="scroll" ref={scrollRef}>
             <Navbar />
-            <main className="flex-grow" style={{ background: 'linear-gradient(180deg, #000000 0%, #000000 10%, #0f172a 25%, #1e293b 45%, #172554 60%, #0f172a 80%, #000000 100%)' }}>
+            <main className="flex-grow overflow-x-hidden" style={{ background: 'linear-gradient(180deg, #000000 0%, #000000 10%, #0f172a 25%, #1e293b 45%, #172554 60%, #0f172a 80%, #000000 100%)' }}>
                 <HomeSection />
                 <AboutSection />
                 <ExperienceSection />
