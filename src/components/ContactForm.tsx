@@ -45,36 +45,36 @@ export default function ContactForm() {
             <h3 className="text-2xl font-semibold text-center mb-6">Get in Touch</h3>
 
             <div>
-                <label className="block mb-2 text-sm text-left font-bold text-zinc-300">Name</label>
+                <label className="block mb-2 text-sm text-left font-medium text-zinc-400">Name</label>
                 <input
                     type="text"
                     name="name"
                     required
                     className="w-full p-3 rounded-lg bg-zinc-800 border border-zinc-700
-                               focus:border-blue-500 focus:ring-2 focus:ring-blue-500 outline-none"
+                               focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500 outline-none"
                     placeholder="Your name"
                 />
             </div>
 
             <div>
-                <label className="block mb-2 text-left text-sm font-bold text-zinc-300">Email</label>
+                <label className="block mb-2 text-left text-sm font-medium text-zinc-400">Email</label>
                 <input
                     type="email"
                     name="email"
                     required
                     className="w-full p-3 rounded-lg bg-zinc-800 border border-zinc-700
-                               focus:border-blue-500 focus:ring-2 focus:ring-blue-500 outline-none"
+                               focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500 outline-none"
                     placeholder="you@example.com"
                 />
             </div>
 
             <div>
-                <label className="block mb-2 text-left text-sm font-bold text-zinc-300">Message</label>
+                <label className="block mb-2 text-left text-sm font-medium text-zinc-400">Message</label>
                 <textarea
                     name="message"
                     required
                     className="w-full p-3 rounded-lg bg-zinc-800 border border-zinc-700
-                               focus:border-blue-500 focus:ring-2 focus:ring-blue-500 outline-none"
+                               focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500 outline-none"
                     rows={5}
                     placeholder="Write your message..."
                 ></textarea>
@@ -84,7 +84,7 @@ export default function ContactForm() {
             <button
                 type="submit"
                 disabled={status === "loading"}
-                className="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold
+                className="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold
                              py-3 px-4 rounded-lg transition-colors duration-200"
             >
                 {status === "loading" && <Loader2 className="w-5 h-5 animate-spin" />}

@@ -1,8 +1,8 @@
-"use client"
-
 import { useState, useEffect } from "react";
 import Section from "../components/Section";
 import Stars from "../components/Stars";
+import Nebula from "../components/Nebula";
+import ShootingStars from "../components/ShootingStars";
 
 export default function HomeSection() {
     const fullText = "I'm a Waterloo CS graduate based in Toronto";
@@ -30,8 +30,8 @@ export default function HomeSection() {
     }, []);
 
     return (
-        <Section id="home" background={<Stars />}>
-            <h1 className="text-5xl font-black font-sans mb-4">Hi, I’m Sean</h1>
+        <Section id="home" background={<><Nebula /><Stars /><ShootingStars /></>} sticky={true}>
+            <h1 className="text-6xl md:text-7xl font-black font-[‘Space_Grotesk’] mb-4">Hi, I’m Sean</h1>
             <p className="text-xl max-w-2xl mx-auto font-mono">
                 {displayedText}
                 <span className={`ml-1 ${showCursor ? "opacity-100" : "opacity-0"} inline-block`}>|</span>

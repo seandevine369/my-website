@@ -1,9 +1,8 @@
 import Section from "../components/Section";
+import FloatingParticles from "../components/FloatingParticles";
+import { useInView } from "@/lib/useInView";
 
 export default function AboutSection() {
-    const bg =
-        <div className="absolute inset-0 bg-gradient-to-r from-zinc-800 via-zinc-900 to-black opacity-95" />
-
     /* Calculate age dynamically */
     const birthDate = new Date("2002-10-10");
     const today = new Date();
@@ -13,25 +12,35 @@ export default function AboutSection() {
         (today.getMonth() === birthDate.getMonth() && today.getDate() >= birthDate.getDate());
     if (!hasHadBirthdayThisYear) age--;
 
+    const { ref: textRef, visible: textVisible } = useInView();
+    const { ref: imgRef, visible: imgVisible } = useInView();
+
     return (
-        <Section id="about" title="About Me" background={bg}>
-            <div className="px-12 lg:px-32 py-16">
+        <Section id="about" title="About Me" background={<FloatingParticles count={30} />}>
+            <div className="max-w-6xl mx-auto">
 
                 {/* Flex Layout: Text + Image */}
                 <div className="flex flex-col md:flex-row items-center md:items-start gap-16">
                     {/* Text */}
-                    <div className="flex-1 text-center md:text-left">
-                        <p className="max-w-3xl mx-auto text-s sm:text-m md:text-l lg:text-xl leading-relaxed">
-                            I’m a {age}-year-old software developer with a passion for math, science, and understanding how the world works. When I’m not coding, you’ll probably find me playing guitar, exploring chess strategies, reading about science and technology, or lifting weights at the gym.
-                            <br /><br />
-                            I’m motivated by progress—both personal and professional. I enjoy analyzing systems, breaking down problems, and figuring out how to make things more efficient or effective. Sometimes that means experimenting until I get it right; often times it’s learning from others’ perspectives to refine my own thinking. I value discussion and diverse opinions because they often reveal insights you wouldn’t find on your own. I find that many times the best ideas can come from the people you expect the least.
-                            <br /><br />
-                            Ultimately, I’m always looking for ways to learn, grow, and understand more deeply. Whether through code, music, strategy games, or conversation, I enjoy the challenge of figuring out how things work and finding better ways to do them.
-                        </p>
+                    <div
+                        ref={textRef}
+                        className={`flex-1 text-center md:text-left transform transition-all duration-700 ease-out ${textVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+                    >
+                        <div className="max-w-3xl mx-auto space-y-5 text-base sm:text-lg md:text-lg lg:text-xl leading-relaxed border-l-2 border-green-400/30 pl-6">
+                            <p>
+                                I'm a {age}-year-old software developer with a passion for math, science, and understanding how the world works. I enjoy breaking down complex problems, analyzing systems, and finding ways to make things more efficient — whether that means experimenting until I get it right or learning from others' perspectives to sharpen my own thinking.
+                            </p>
+                            <p>
+                                Outside of coding, you'll probably find me playing guitar, exploring chess strategies, reading about science and technology, or at the gym. I'm always looking for ways to learn, grow, and understand things more deeply.
+                            </p>
+                        </div>
                     </div>
 
                     {/* Image */}
-                    <div className="max-w-xs sm:max-w-sm md:max-w-lg flex-1 flex justify-center md:justify-end">
+                    <div
+                        ref={imgRef}
+                        className={`max-w-xs sm:max-w-sm md:max-w-lg flex-1 flex justify-center md:justify-end transform transition-all duration-700 ease-out delay-200 ${imgVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+                    >
                         <img
                             src="/about-me.jpeg"
                             alt="About me"

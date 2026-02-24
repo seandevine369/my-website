@@ -1,13 +1,6 @@
-import { useState, useRef, useEffect } from "react";
+import { useInView } from "@/lib/useInView";
 import Section from "../components/Section";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import {
-    Collapsible,
-    CollapsibleContent,
-} from "@/components/ui/collapsible"
-import { ChevronDown, ChevronUp } from "lucide-react"
-
+import FloatingParticles from "../components/FloatingParticles";
 
 type Experience = {
     id: string
@@ -16,6 +9,7 @@ type Experience = {
     summary: string
     details: string[]
     logoUrl: string
+    logoBg?: string
 }
 
 const experiences: Experience[] = [
@@ -25,11 +19,11 @@ const experiences: Experience[] = [
         subtitle: "Full Stack Developer  | Jan 2025 – Apr 2025",
         summary: "Small (8 person) startup, worked on proprietary real estate development software",
         details: [
-            "Rebuilt a React frontend from Figma wireframes with a component library, delivering a more consistent UI and cutting average latency by half",
-            "Integrated Google Maps API & City of Toronto zoning API for property searches & zoning visualization",
-            "Refactored backend with MVC using Prisma & PostgreSQL, reducing DB size by 43%",
+            "Rebuilt the React frontend from Figma wireframes with a component library, cutting average page latency by half",
+            "Integrated Google Maps and City of Toronto zoning APIs for property search and zoning visualization",
+            "Refactored the backend to MVC with Prisma and PostgreSQL, reducing database size by 43%",
         ],
-        logoUrl:"/logos/structa.jpeg",
+        logoUrl: "/logos/structa.jpeg",
     },
     {
         id: "dsv",
@@ -37,11 +31,12 @@ const experiences: Experience[] = [
         subtitle: "Full Stack Developer | Jan 2024 – Apr 2024",
         summary: "Toronto construction company; worked in small team to develop condo customization portal from the ground up",
         details: [
-            "Built a React condo customization portal from Figma wireframes, letting buyers preview finish selections & cutting sales–client coordination by 50%",
-            "Designed a PostgreSQL schema & Node.js/Express backend for multi-unit configs & approvals, replacing spreadsheets & reducing miscommunication",
-            "Added API validation, & Jest tests to ensure reliable data sync between sales & construction teams",
+            "Built a React condo customization portal from Figma wireframes, letting buyers preview finishes and cutting sales-client coordination by 50%",
+            "Designed a PostgreSQL schema and Node.js/Express backend for multi-unit configurations and approvals",
+            "Added API validation and Jest tests to keep data in sync between sales and construction teams",
         ],
-        logoUrl:"/logos/dsv.png",
+        logoUrl: "/logos/dsv.png",
+        logoBg: "bg-zinc-700",
     },
     {
         id: "ist",
@@ -49,21 +44,21 @@ const experiences: Experience[] = [
         subtitle: "Computing Consultant | Sept 2023 – Aug 2025",
         summary: "Worked for the IT help desk for the University of Waterloo; helped solve tech issues for Waterloo students, staff, faculty and alumni",
         details: [
-            "Resolved over 2500 software & firmware issues for UWaterloo affiliates, earning an average 4.9 star review",
-            "Documented procedures in Jira & delivered 40+ hours of new-hire training for knowledge transfer",
+            "Resolved 2,500+ software and firmware issues for university affiliates, averaging a 4.9-star review",
+            "Documented procedures in Jira and delivered 40+ hours of new-hire training",
         ],
-        logoUrl:"/logos/uwaterloo.svg",
+        logoUrl: "/logos/uwaterloo.svg",
     },
     {
         id: "multimatic",
-        title: " Multimatic Inc.",
+        title: "Multimatic Inc.",
         subtitle: "Automation Developer | Sept 2022 – Dec 2022",
         summary: "Collaborated within the IT department to automate manual processes",
         details: [
-            "Automated invoice approval workflows with Python & Power Automate, reducing average time by 65%",
-            "Developed a secure automated payment system to process transactions exceeding $50,000",
+            "Automated invoice approval workflows with Python and Power Automate, reducing processing time by 65%",
+            "Developed a secure automated payment system handling transactions over $50,000",
         ],
-        logoUrl:"/logos/multimatic.png",
+        logoUrl: "/logos/multimatic.png",
     },
     {
         id: "ssnc",
@@ -71,120 +66,63 @@ const experiences: Experience[] = [
         subtitle: "Full Stack Developer | Jan 2022 – Apr 2022",
         summary: "Worked on SS&C Lyric, a proprietary financial software API",
         details: [
-            "Developed a custom Apache NiFi processor to parse 10,000+ financial receipts weekly",
-            "Designed & deployed a data pipeline for ingesting, processing, & updating receipt data in real time",
-            "Debugged and resolved over 30 issues for a financial software API platform based in Spring Boot",
+            "Built a custom Apache NiFi processor to parse 10,000+ financial receipts per week",
+            "Designed and deployed a real-time data pipeline for ingesting and processing receipt data",
+            "Resolved 30+ issues in a Spring Boot financial software API",
         ],
-        logoUrl:"/logos/ssnc.png",
+        logoUrl: "/logos/ssnc.png",
     },
 ]
 
 export default function ExperienceSection() {
-    const bg =
-        <div className="absolute inset-0 bg-gradient-to-bl from-zinc-950 via-zinc-900 to-indigo-950 opacity-70" />
     return (
-        <Section id="experience" title="Experience" background={bg} sticky={true}>
-            <div className="max-w-6xl mx-auto space-y-6">
-                {experiences.map((exp) => (
-                    <ExperienceItem key={exp.id} experience={exp} />
-                ))}
+        <Section id="experience" title="Experience" background={<FloatingParticles count={25} color="bg-green-400" maxSize={1.5} />}>
+            <div className="max-w-4xl mx-auto relative">
+                {/* Timeline line */}
+                <div className="absolute left-12 top-0 bottom-0 border-l-2 border-zinc-700" />
+
+                <div className="space-y-12">
+                    {experiences.map((exp, index) => (
+                        <ExperienceItem key={exp.id} experience={exp} index={index} />
+                    ))}
+                </div>
             </div>
         </Section>
     )
 }
 
-function useInView(threshold = 0, rootMargin = "0% 0% -13% 0%") {
-    const [visible, setVisible] = useState(false);
-    const ref = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => setVisible(entry.isIntersecting));
-            },
-            { threshold, rootMargin }
-        );
-
-        const el = ref.current;
-        if (el) observer.observe(el);
-
-        return () => {
-            if (el) observer.unobserve(el);
-        };
-    }, [threshold, rootMargin]);
-
-    return { ref, visible };
-}
-
-function ExperienceItem({ experience }: { experience: Experience }) {
+function ExperienceItem({ experience, index }: { experience: Experience; index: number }) {
     const { ref, visible } = useInView();
 
     return (
-        <div key={experience.id}
-             ref={ref}
-             className={`flex items-start gap-6 transform transition-all duration-700 ease-out 
-        ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+        <div
+            ref={ref}
+            className={`relative flex items-start gap-6 transform transition-all duration-700 ease-out
+                ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+            style={{ transitionDelay: `${index * 100}ms` }}
         >
-            {/* Logo section (1/5) */}
-            <div className="w-1/5 flex justify-center">
-                <div className="aspect-square h-45 rounded-lg overflow-hidden shadow-md flex items-center justify-center">
+            {/* Logo node on the timeline */}
+            <div className="relative z-10 flex-shrink-0">
+                <div className={`w-24 h-24 rounded-full ${experience.logoBg ?? "bg-white"} p-2.5 ring-4 ring-zinc-900 flex items-center justify-center`}>
                     <img
-                        src={`${experience.logoUrl}`}
+                        src={experience.logoUrl}
                         alt={`${experience.title} logo`}
-                        className="w-full h-full object-contain"
+                        className="w-full h-full object-contain rounded-full"
                     />
                 </div>
             </div>
-            {/* Card section (4/5) */}
-            <div className="w-4/5 text-left">
-                <ExperienceCard experience={experience} />
+
+            {/* Content */}
+            <div className="text-left pb-2 pt-1 rounded-xl px-4 py-3 transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.03] hover:border-green-500/20 border border-transparent">
+                <h3 className="text-2xl font-bold text-white">{experience.title}</h3>
+                <p className="text-sm md:text-base text-gray-400 uppercase tracking-wide">{experience.subtitle}</p>
+                <p className="text-base text-gray-300 mt-2 leading-relaxed">{experience.summary}</p>
+                <ul className="list-disc list-outside pl-5 mt-3 space-y-1.5">
+                    {experience.details.map((d, i) => (
+                        <li key={i} className="text-sm md:text-base text-gray-400 leading-relaxed">{d}</li>
+                    ))}
+                </ul>
             </div>
         </div>
-    )
-}
-
-function ExperienceCard({ experience }: { experience: Experience }) {
-    const [open, setOpen] = useState(false)
-    return (
-        <Card className="shadow-md rounded-none bg-zinc-800 border-0">
-
-            <CardHeader>
-                <CardTitle className="text-4xl text-white font-bold">{experience.title}</CardTitle>
-                <CardDescription className="uppercase tracking-wide text-gray-400 font-medium text-lg">
-                    {experience.subtitle}
-                </CardDescription>
-            </CardHeader>
-
-            <CardContent>
-                <p className="text-gray-200 text-lg mb-3">{experience.summary}</p>
-                <Collapsible open={open} onOpenChange={setOpen}>
-                    <CollapsibleContent className="overflow-hidden">
-                        <ul className="list-disc list-outside pl-6 text-gray-200 text-lg mb-3">
-                            {experience.details.map((d, i) => (
-                                <li key={i} className="ml-0">
-                                    {d}
-                                </li>
-                            ))}
-                        </ul>
-                    </CollapsibleContent>
-                    <Button
-                        variant="ghost"
-                        className="p-0 h-auto font-medium flex items-center gap-1 text-gray-200 hover:bg-zinc-600 hover:text-gray-200"
-                        onClick={() => setOpen(!open)}
-                    >
-                        {open ? (
-                            <>
-                                Collapse <ChevronUp className="w-4 h-4 transition-transform duration-300" />
-                            </>
-                        ) : (
-                            <>
-                                Read more <ChevronDown className="w-4 h-4 transition-transform duration-300" />
-                            </>
-                        )}
-                    </Button>
-
-                </Collapsible>
-            </CardContent>
-        </Card>
     )
 }
