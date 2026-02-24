@@ -5,7 +5,7 @@ import Nebula from "../components/Nebula";
 import ShootingStars from "../components/ShootingStars";
 
 export default function HomeSection() {
-    const fullText = "I'm a Waterloo CS graduate based in Toronto";
+    const fullText = "I'm a Waterloo Computer Science grad based in Toronto";
     const [displayedText, setDisplayedText] = useState("");
     const [showCursor, setShowCursor] = useState(true);
 
