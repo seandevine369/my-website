@@ -57,7 +57,7 @@ export default function ProjectsSection() {
         <Section id="projects" title="Projects" background={<Galaxy />}>
             <div
                 ref={ref}
-                className={`max-w-6xl mx-auto space-y-8 transform transition-all duration-700 ease-out ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+                className={`w-full max-w-6xl mx-auto space-y-8 transform transition-all duration-700 ease-out ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
             >
                 {/* Featured: Voluntus — compact */}
                 <div className="relative rounded-2xl p-[1px] bg-gradient-to-r from-green-500 via-green-400 to-green-500">
@@ -121,8 +121,10 @@ export default function ProjectsSection() {
                                 </CarouselItem>
                             ))}
                         </CarouselContent>
-                        <CarouselPrevious className="w-10 h-10 -translate-x-4 bg-zinc-800/80 text-gray-300 hover:bg-zinc-700 hover:text-white border border-zinc-700/50" />
-                        <CarouselNext className="w-10 h-10 translate-x-4 bg-zinc-800/80 text-gray-300 hover:bg-zinc-700 hover:text-white border border-zinc-700/50" />
+                        <div className="flex justify-center gap-2 mt-4">
+                            <CarouselPrevious className="static translate-x-0 translate-y-0 w-10 h-10 bg-zinc-800/80 text-gray-300 hover:bg-zinc-700 hover:text-white border border-zinc-700/50" />
+                            <CarouselNext className="static translate-x-0 translate-y-0 w-10 h-10 bg-zinc-800/80 text-gray-300 hover:bg-zinc-700 hover:text-white border border-zinc-700/50" />
+                        </div>
                     </Carousel>
                 </div>
             </div>

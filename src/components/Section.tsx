@@ -34,7 +34,7 @@ export default function Section({
                     sticky ? "sticky top-0 min-h-screen" : "relative"
                 } flex flex-col justify-center items-center text-center`}
             >
-                <div className="relative z-10 px-4 sm:px-6 py-14 md:py-20">
+                <div className="relative z-10 px-4 sm:px-6 py-14 md:py-20 w-full max-w-full overflow-x-hidden box-border">
                     {title && (
                         <div className="relative mb-12">
                             {/* Faint radial glow behind heading */}
