@@ -31,10 +31,10 @@ export default function HomeSection() {
 
     return (
         <Section id="home" background={<><Nebula /><Stars /><ShootingStars /></>} sticky={true}>
-            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black font-[‘Space_Grotesk’] mb-4">Hi, I’m Sean</h1>
+            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4">Hi, I’m Sean</h1>
             <p className="text-base sm:text-lg md:text-xl max-w-2xl mx-auto font-mono">
                 {displayedText}
-                <span className={`ml-1 ${showCursor ? "opacity-100" : "opacity-0"} inline-block`}>|</span>
+                <span className={`${showCursor ? "opacity-100" : "opacity-0"} inline-block`}>|</span>
             </p>
         </Section>
     );
