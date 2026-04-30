@@ -8,6 +8,7 @@ import ExperienceSection from "./sections/ExperienceSection";
 import { useRef, useEffect } from "react";
 import LocomotiveScroll from "locomotive-scroll";
 import 'locomotive-scroll/dist/locomotive-scroll.css'
+import { Analytics } from "@vercel/analytics/react";
 
 
 export default function App() {
@@ -45,6 +46,7 @@ export default function App() {
                 <Footer />
             </main>
             </div>
+            <Analytics />
         </div>
     );
 }
